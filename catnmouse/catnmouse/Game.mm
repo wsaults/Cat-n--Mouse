@@ -123,8 +123,32 @@
     
     b2Vec2 force = b2Vec2(10, 10);
     ballBody->ApplyLinearImpulse(force, ballBodyDef.position);
+    // end cat1
     
+    // Create sprite and add it to the layer
+    CCSprite *cat2 = [CCSprite spriteWithFile:@"Ball.png" 
+                                         rect:CGRectMake(0, 0, 52, 52)];
+    cat2.position = ccp(300, 25);
+    cat2.tag = 2;
+    [self addChild:cat2];
     
+    // Create cat2 body 
+    b2BodyDef cat2BodyDef;
+    cat2BodyDef.type = b2_dynamicBody;
+    cat2BodyDef.position.Set(300/PTM_RATIO, 25/PTM_RATIO);
+    cat2BodyDef.userData = cat2;
+    b2Body * cat2Body = _world->CreateBody(&cat2BodyDef);
+    
+    // Create shape definition and add to body
+    b2FixtureDef cat2ShapeDef;
+    cat2ShapeDef.shape = &circle;
+    cat2ShapeDef.density = 1.0f;
+    cat2ShapeDef.friction = 0.f;
+    cat2ShapeDef.restitution = 1.0f;
+    _ballFixture = cat2Body->CreateFixture(&cat2ShapeDef);
+    
+    cat2Body->ApplyLinearImpulse(force, cat2BodyDef.position);
+
     
     // Create mouse and add it to the layer
     CCSprite *mouse = [CCSprite spriteWithFile:@"Ball.png" rect:CGRectMake(0, 0, 52, 52)];

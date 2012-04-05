@@ -29,6 +29,8 @@
     b2Fixture *_bottomFixture;
     b2Fixture *_ballFixture;
     
+    b2Fixture *_catFixture2;
+    
     b2Body *_mouseBody;
     b2Fixture *_mouseFixture;
     
