@@ -68,6 +68,7 @@
 
 - (void)startGame
 {    
+//    [SimpleAudioEngine sharedEngine] playBackgroundMusic:@".caf"];
     CGSize winSize = [CCDirector sharedDirector].winSize;
     
     // Create a world
@@ -149,6 +150,9 @@
     mouseShapeDef.restitution = 0.1f;
     _mouseFixture = _mouseBody->CreateFixture(&mouseShapeDef);
     
+    // Create contact listener
+    _contactListener = new MyContactListener();
+    _world->SetContactListener(_contactListener);
     
     [self schedule:@selector(tick:)];
 }
@@ -176,6 +180,18 @@
                 }
                 
             }
+        }
+    }
+    
+    std::vector<MyContact>::iterator pos;
+    for(pos = _contactListener->_contacts.begin(); 
+        pos != _contactListener->_contacts.end(); ++pos) {
+        MyContact contact = *pos;
+        
+        if ((contact.fixtureA == _mouseFixture && contact.fixtureB == _ballFixture) ||
+            (contact.fixtureA == _ballFixture && contact.fixtureB == _mouseFixture)) {
+            CCLOG(@"Cat got the mouse!");
+            [self gameOver];
         }
     }
     
@@ -354,6 +370,7 @@
 {
     delete _world;
     _groundBody = NULL;
+    delete _contactListener;
     CCLOG(@"dealloc: %@", self);
     [super dealloc];
 }

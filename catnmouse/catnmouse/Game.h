@@ -8,6 +8,7 @@
 
 #import "cocos2d.h"
 #import "Box2D.h"
+#import "MyContactListener.h"
 
 @class AppDelegate;
 
@@ -32,6 +33,8 @@
     b2Fixture *_mouseFixture;
     
     b2MouseJoint *_mouseJoint;
+    
+    MyContactListener *_contactListener;
     
 }
 
