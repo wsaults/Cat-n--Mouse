@@ -166,6 +166,12 @@
     if (score > [self getHighScore]) {
         [[NSUserDefaults standardUserDefaults] setInteger:score forKey:kHighScoreKey];
     }
+    timesPlayed++;
+    [[NSUserDefaults standardUserDefaults] setInteger:timesPlayed forKey:kTimesPlayed];
+    if (timesPlayed % 10 == 0 && ![[NSUserDefaults standardUserDefaults] boolForKey:kDidRate]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Like Cat N' Mouse?" message:@"If you like Cat N' Mouse, please rate it to show your support." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Rate", nil];
+        [alert show];
+    }
 }
 
 -(int)getHighScore

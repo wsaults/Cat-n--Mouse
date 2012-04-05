@@ -27,9 +27,9 @@
     b2World *_world;
     b2Body *_groundBody;
     b2Fixture *_bottomFixture;
-    b2Fixture *_ballFixture;
+    b2Fixture *_cat1Fixture;
     
-    b2Fixture *_catFixture2;
+    b2Fixture *_cat2Fixture;
     
     b2Body *_mouseBody;
     b2Fixture *_mouseFixture;

@@ -95,34 +95,34 @@
     _groundBody->CreateFixture(&groundBoxDef);
     
     // Create sprite and add it to the layer
-    CCSprite *ball = [CCSprite spriteWithFile:@"Ball.png" 
+    CCSprite *cat1 = [CCSprite spriteWithFile:@"Ball.png" 
                                          rect:CGRectMake(0, 0, 52, 52)];
     
-    ball.position = ccp(100, 100);
-    ball.tag = 1;
-    [self addChild:ball];
+    cat1.position = ccp(100, 100);
+    cat1.tag = 1;
+    [self addChild:cat1];
     
     // Create ball body 
-    b2BodyDef ballBodyDef;
-    ballBodyDef.type = b2_dynamicBody;
-    ballBodyDef.position.Set(100/PTM_RATIO, 100/PTM_RATIO);
-    ballBodyDef.userData = ball;
-    b2Body * ballBody = _world->CreateBody(&ballBodyDef);
+    b2BodyDef cat1BodyDef;
+    cat1BodyDef.type = b2_dynamicBody;
+    cat1BodyDef.position.Set(100/PTM_RATIO, 100/PTM_RATIO);
+    cat1BodyDef.userData = cat1;
+    b2Body * cat1Body = _world->CreateBody(&cat1BodyDef);
     
     // Create circle shape
     b2CircleShape circle;
     circle.m_radius = 26.0/PTM_RATIO;
     
     // Create shape definition and add to body
-    b2FixtureDef ballShapeDef;
-    ballShapeDef.shape = &circle;
-    ballShapeDef.density = 1.0f;
-    ballShapeDef.friction = 0.f;
-    ballShapeDef.restitution = 1.0f;
-    _ballFixture = ballBody->CreateFixture(&ballShapeDef);
+    b2FixtureDef cat1ShapeDef;
+    cat1ShapeDef.shape = &circle;
+    cat1ShapeDef.density = 1.0f;
+    cat1ShapeDef.friction = 0.f;
+    cat1ShapeDef.restitution = 1.0f;
+    _cat1Fixture = cat1Body->CreateFixture(&cat1ShapeDef);
     
     b2Vec2 force = b2Vec2(10, 10);
-    ballBody->ApplyLinearImpulse(force, ballBodyDef.position);
+    cat1Body->ApplyLinearImpulse(force, cat1BodyDef.position);
     // end cat1
     
     // Create sprite and add it to the layer
@@ -142,10 +142,10 @@
     // Create shape definition and add to body
     b2FixtureDef cat2ShapeDef;
     cat2ShapeDef.shape = &circle;
-    cat2ShapeDef.density = 1.0f;
+    cat2ShapeDef.density = .5f;
     cat2ShapeDef.friction = 0.f;
     cat2ShapeDef.restitution = 1.0f;
-    _ballFixture = cat2Body->CreateFixture(&cat2ShapeDef);
+    _cat2Fixture = cat2Body->CreateFixture(&cat2ShapeDef);
     
     cat2Body->ApplyLinearImpulse(force, cat2BodyDef.position);
 
@@ -170,8 +170,8 @@
     b2FixtureDef mouseShapeDef;
     mouseShapeDef.shape = &mouseShape;
     mouseShapeDef.density = 10.0f;
-    mouseShapeDef.friction = 0.4f;
-    mouseShapeDef.restitution = 0.1f;
+    mouseShapeDef.friction = 0.6f;
+    mouseShapeDef.restitution = 0.001f;
     _mouseFixture = _mouseBody->CreateFixture(&mouseShapeDef);
     
     // Create contact listener
@@ -212,9 +212,15 @@
         pos != _contactListener->_contacts.end(); ++pos) {
         MyContact contact = *pos;
         
-        if ((contact.fixtureA == _mouseFixture && contact.fixtureB == _ballFixture) ||
-            (contact.fixtureA == _ballFixture && contact.fixtureB == _mouseFixture)) {
-            CCLOG(@"Cat got the mouse!");
+        if ((contact.fixtureA == _mouseFixture && contact.fixtureB == _cat1Fixture) ||
+            (contact.fixtureA == _cat1Fixture && contact.fixtureB == _mouseFixture)) {
+            CCLOG(@"Cat1 got the mouse!");
+            [self gameOver];
+        }
+        
+        if ((contact.fixtureA == _mouseFixture && contact.fixtureB == _cat2Fixture) ||
+            (contact.fixtureA == _cat2Fixture && contact.fixtureB == _mouseFixture)) {
+            CCLOG(@"Cat2 got the mouse!");
             [self gameOver];
         }
     }
