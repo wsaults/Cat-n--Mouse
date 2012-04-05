@@ -166,6 +166,7 @@
 		BE531E9C151CEE7800541B9C /* blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = BE531E9B151CEE7800541B9C /* blocks.png */; };
 		BE531EA4151CF09A00541B9C /* MainMenu.mm in Sources */ = {isa = PBXBuildFile; fileRef = BE531EA3151CF09A00541B9C /* MainMenu.mm */; };
 		BE531EA7151CF18E00541B9C /* Game.mm in Sources */ = {isa = PBXBuildFile; fileRef = BE531EA6151CF18E00541B9C /* Game.mm */; };
+		BE7C4231152E160000BE3297 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE7C4230152E160000BE3297 /* GameKit.framework */; };
 		BEADA5381528D0B900865AAD /* Ball.png in Resources */ = {isa = PBXBuildFile; fileRef = BEADA5371528D0B900865AAD /* Ball.png */; };
 		BEADA5411528DE4700865AAD /* moles-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE0D3D9F151FEE3B007345E5 /* moles-hd.plist */; };
 		BEADA5421528DE4900865AAD /* moles-hd.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = BE0D3DA0151FEE3B007345E5 /* moles-hd.pvr.ccz */; };
@@ -509,6 +510,7 @@
 		BE531EA3151CF09A00541B9C /* MainMenu.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MainMenu.mm; sourceTree = "<group>"; };
 		BE531EA5151CF18E00541B9C /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
 		BE531EA6151CF18E00541B9C /* Game.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Game.mm; sourceTree = "<group>"; };
+		BE7C4230152E160000BE3297 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		BEADA5371528D0B900865AAD /* Ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ball.png; sourceTree = "<group>"; };
 		BEADA7401528ED6100865AAD /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		BEBD7967152E10C3003C78F1 /* Ball-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ball-hd.png"; sourceTree = "<group>"; };
@@ -538,6 +540,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE7C4231152E160000BE3297 /* GameKit.framework in Frameworks */,
 				BE531CBA151CEE7500541B9C /* QuartzCore.framework in Frameworks */,
 				BE531CBC151CEE7500541B9C /* OpenGLES.framework in Frameworks */,
 				BE531CBE151CEE7500541B9C /* OpenAL.framework in Frameworks */,
@@ -589,6 +592,7 @@
 		BE531CB8151CEE7500541B9C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BE7C4230152E160000BE3297 /* GameKit.framework */,
 				BEADA7401528ED6100865AAD /* Accelerate.framework */,
 				BE531CB9151CEE7500541B9C /* QuartzCore.framework */,
 				BE531CBB151CEE7500541B9C /* OpenGLES.framework */,
