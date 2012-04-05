@@ -7,7 +7,6 @@
 //
 
 #import "cocos2d.h"
-
 #import "AppDelegate.h"
 #import "GameConfig.h"
 #import "Game.h"
@@ -53,7 +52,7 @@
 	if( ! [CCDirector setDirectorType:kCCDirectorTypeDisplayLink] )
 		[CCDirector setDirectorType:kCCDirectorTypeDefault];
 	
-	
+    wiz = [[GKWizard alloc] init];
 	CCDirector *director = [CCDirector sharedDirector];
 	
 	// Init the View Controller
@@ -75,7 +74,7 @@
 	[director setOpenGLView:glView];
 	
 //	// Enables High Res mode (Retina Display) on iPhone 4 and maintains low res on all other devices
-//	if( ! [director enableRetinaDisplay:YES] )
+	if( ! [director enableRetinaDisplay:YES] )
 //		CCLOG(@"Retina Display Not supported");
 	
 	//
@@ -165,6 +164,7 @@
 {
     if (score > [self getHighScore]) {
         [[NSUserDefaults standardUserDefaults] setInteger:score forKey:kHighScoreKey];
+        [wiz reportScore:score forLeaderboard:kHighScoreKey];
     }
     timesPlayed++;
     [[NSUserDefaults standardUserDefaults] setInteger:timesPlayed forKey:kTimesPlayed];
@@ -224,10 +224,22 @@
     
 }
 
+-(void)showLeaderboard
+{
+    GKLeaderboardViewController *lb = [[[GKLeaderboardViewController alloc] init] autorelease];
+    lb.leaderboardDelegate = self;
+    [viewController presentModalViewController:lb animated:YES];
+}
+
+-(void)leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController
+{
+    [viewController dismissModalViewControllerAnimated:YES];
+}
 
 - (void)dealloc {
 	[[CCDirector sharedDirector] end];
 	[window release];
+    [wiz release];
 	[super dealloc];
 }
 

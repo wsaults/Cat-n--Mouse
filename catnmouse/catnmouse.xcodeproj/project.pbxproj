@@ -171,6 +171,8 @@
 		BEADA5421528DE4900865AAD /* moles-hd.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = BE0D3DA0151FEE3B007345E5 /* moles-hd.pvr.ccz */; };
 		BEADA5431528DE4B00865AAD /* moles.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE0D3DA1151FEE3B007345E5 /* moles.plist */; };
 		BEADA5441528DE4C00865AAD /* moles.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = BE0D3DA2151FEE3B007345E5 /* moles.pvr.ccz */; };
+		BEBD7968152E10C3003C78F1 /* Ball-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = BEBD7967152E10C3003C78F1 /* Ball-hd.png */; };
+		BEBD796C152E1386003C78F1 /* GKWizard.mm in Sources */ = {isa = PBXBuildFile; fileRef = BEBD796A152E11BA003C78F1 /* GKWizard.mm */; };
 		BEE04470151ED73C00A9B122 /* PopUp.mm in Sources */ = {isa = PBXBuildFile; fileRef = BEE0446F151ED73C00A9B122 /* PopUp.mm */; };
 		BEE04487151EE7DA00A9B122 /* 24-hd.fnt in Resources */ = {isa = PBXBuildFile; fileRef = BEE0447F151EE7DA00A9B122 /* 24-hd.fnt */; };
 		BEE04488151EE7DA00A9B122 /* 24-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = BEE04480151EE7DA00A9B122 /* 24-hd.png */; };
@@ -509,6 +511,9 @@
 		BE531EA6151CF18E00541B9C /* Game.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Game.mm; sourceTree = "<group>"; };
 		BEADA5371528D0B900865AAD /* Ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ball.png; sourceTree = "<group>"; };
 		BEADA7401528ED6100865AAD /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		BEBD7967152E10C3003C78F1 /* Ball-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ball-hd.png"; sourceTree = "<group>"; };
+		BEBD7969152E11BA003C78F1 /* GKWizard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKWizard.h; sourceTree = "<group>"; };
+		BEBD796A152E11BA003C78F1 /* GKWizard.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = GKWizard.mm; sourceTree = "<group>"; };
 		BEE0446E151ED73C00A9B122 /* PopUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopUp.h; sourceTree = "<group>"; };
 		BEE0446F151ED73C00A9B122 /* PopUp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PopUp.mm; sourceTree = "<group>"; };
 		BEE04478151EDE4D00A9B122 /* CCMenuPopup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCMenuPopup.h; sourceTree = "<group>"; };
@@ -600,6 +605,8 @@
 		BE531CC9151CEE7500541B9C /* catnmouse */ = {
 			isa = PBXGroup;
 			children = (
+				BEBD7969152E11BA003C78F1 /* GKWizard.h */,
+				BEBD796A152E11BA003C78F1 /* GKWizard.mm */,
 				BE531E8E151CEE7800541B9C /* AppDelegate.h */,
 				BE531E8F151CEE7800541B9C /* AppDelegate.mm */,
 				BEFE472D151FB5D10052CDC6 /* CCSprite+DisableTouch.h */,
@@ -645,6 +652,7 @@
 				BE531CDC151CEE7500541B9C /* iTunesArtwork */,
 				BE531E9B151CEE7800541B9C /* blocks.png */,
 				BEADA5371528D0B900865AAD /* Ball.png */,
+				BEBD7967152E10C3003C78F1 /* Ball-hd.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1181,6 +1189,7 @@
 				BE0D3D89151FBA50007345E5 /* moles_bg-hd.png in Resources */,
 				BE0D3D8A151FBA50007345E5 /* moles_bg.png in Resources */,
 				BEADA5381528D0B900865AAD /* Ball.png in Resources */,
+				BEBD7968152E10C3003C78F1 /* Ball-hd.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1330,6 +1339,7 @@
 				BEE04470151ED73C00A9B122 /* PopUp.mm in Sources */,
 				BEFE4730151FB77F0052CDC6 /* GameButton.mm in Sources */,
 				BE4E6FC3152D4AEC004AC04A /* MyContactListener.mm in Sources */,
+				BEBD796C152E1386003C78F1 /* GKWizard.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1383,10 +1393,11 @@
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = catnmouse/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "\"catnmouse/libs\"";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1402,10 +1413,11 @@
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = catnmouse/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "\"catnmouse/libs\"";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;

@@ -22,11 +22,12 @@
     if((self = [super init])) {
         // Initiliaztion code here.
         CGSize s = [[CCDirector sharedDirector] winSize];
-        
         [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
         delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         
-        NSString *fileName =  [NSString stringWithFormat: @"%@.plist", [delegate getCurrentSkin]];
+        NSString *fileName = [NSString stringWithFormat: @"%@.plist", 
+                                         [delegate getCurrentSkin]];
+        
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:fileName];
         
         int fSize = 24;
@@ -72,7 +73,7 @@
 
 - (void)showLeaderboard
 {
-    
+    [delegate showLeaderboard];
 }
 
 - (void)dealloc

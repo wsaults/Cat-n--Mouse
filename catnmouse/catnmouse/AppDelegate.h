@@ -7,15 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GKWizard.h"
 
 @class RootViewController;
 
-@interface AppDelegate : NSObject <UIApplicationDelegate, UIApplicationDelegate> {
+@interface AppDelegate : NSObject <UIApplicationDelegate, UIApplicationDelegate, GKLeaderboardViewControllerDelegate> {
 	UIWindow			*window;
 	RootViewController	*viewController;
     BOOL hasPlayedBefore;
     NSString *currentSkin;
     int timesPlayed,currentAction;
+    GKWizard *wiz;
 }
 
 @property (nonatomic, retain) UIWindow *window;
@@ -27,5 +29,6 @@
 - (BOOL)isGameScene;
 - (NSString *)getCurrentSkin;
 - (UIViewController *)getViewController;
+- (void)showLeaderboard;
 
 @end
