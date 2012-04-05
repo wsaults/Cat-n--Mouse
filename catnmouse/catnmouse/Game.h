@@ -28,6 +28,11 @@
     b2Fixture *_bottomFixture;
     b2Fixture *_ballFixture;
     
+    b2Body *_mouseBody;
+    b2Fixture *_mouseFixture;
+    
+    b2MouseJoint *_mouseJoint;
+    
 }
 
 -(void)pauseGame;

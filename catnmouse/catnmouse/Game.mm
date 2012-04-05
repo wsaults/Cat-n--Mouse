@@ -67,7 +67,7 @@
 }
 
 - (void)startGame
-{
+{    
     CGSize winSize = [CCDirector sharedDirector].winSize;
     
     // Create a world
@@ -123,6 +123,33 @@
     b2Vec2 force = b2Vec2(10, 10);
     ballBody->ApplyLinearImpulse(force, ballBodyDef.position);
     
+    
+    
+    // Create mouse and add it to the layer
+    CCSprite *mouse = [CCSprite spriteWithFile:@"Ball.png" rect:CGRectMake(0, 0, 52, 52)];
+    mouse.position = ccp(winSize.width/2, 50);
+    [self addChild:mouse];
+    
+    // Create paddle body
+    b2BodyDef mouseBodyDef;
+    mouseBodyDef.type = b2_dynamicBody;
+    mouseBodyDef.position.Set(winSize.width/2/PTM_RATIO, 50/PTM_RATIO);
+    mouseBodyDef.userData = mouse;
+    _mouseBody = _world->CreateBody(&mouseBodyDef);
+    
+    // Create paddle shape
+    b2CircleShape mouseShape;
+    mouseShape.m_radius = 26.0/PTM_RATIO;
+    
+    // Create shape definition and add to body
+    b2FixtureDef mouseShapeDef;
+    mouseShapeDef.shape = &mouseShape;
+    mouseShapeDef.density = 10.0f;
+    mouseShapeDef.friction = 0.4f;
+    mouseShapeDef.restitution = 0.1f;
+    _mouseFixture = _mouseBody->CreateFixture(&mouseShapeDef);
+    
+    
     [self schedule:@selector(tick:)];
 }
 
@@ -135,7 +162,21 @@
             sprite.position = ccp(b->GetPosition().x * PTM_RATIO,
                                   b->GetPosition().y * PTM_RATIO);
             sprite.rotation = -1 * CC_RADIANS_TO_DEGREES(b->GetAngle());
-        }        
+            
+            if (sprite.tag == 1) {
+                static int maxSpeed = 10;
+                
+                b2Vec2 velocity = b->GetLinearVelocity();
+                float32 speed = velocity.Length();
+                
+                if (speed > maxSpeed) {
+                    b->SetLinearDamping(0.5);
+                } else if (speed < maxSpeed) {
+                    b->SetLinearDamping(0.0);
+                }
+                
+            }
+        }
     }
     
     //timeElapsed += dt;
@@ -160,6 +201,25 @@
         return;
     }
     
+    if (_mouseJoint != NULL) return;
+    
+    UITouch *myTouch = [touches anyObject];
+    CGPoint location = [myTouch locationInView:[myTouch view]];
+    location = [[CCDirector sharedDirector] convertToGL:location];
+    b2Vec2 locationWorld = b2Vec2(location.x/PTM_RATIO, location.y/PTM_RATIO);
+    
+    if (_mouseFixture->TestPoint(locationWorld)) {
+        b2MouseJointDef md;
+        md.bodyA = _groundBody;
+        md.bodyB = _mouseBody;
+        md.target = locationWorld;
+        md.collideConnected = true;
+        md.maxForce = 1000.0f * _mouseBody->GetMass();
+        
+        _mouseJoint = (b2MouseJoint *)_world->CreateJoint(&md);
+        _mouseBody->SetAwake(true);
+    }
+    
     for (UITouch *touch in [event allTouches]) {
         // Touches a bonus point
 #warning See Chapter 3. Moleit Handling Touches in the game
@@ -175,6 +235,35 @@
 //            }
 //        }
     }
+}
+
+-(void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    if (_mouseJoint == NULL) return;
+    
+    UITouch *myTouch = [touches anyObject];
+    CGPoint location = [myTouch locationInView:[myTouch view]];
+    location = [[CCDirector sharedDirector] convertToGL:location];
+    b2Vec2 locationWorld = b2Vec2(location.x/PTM_RATIO, location.y/PTM_RATIO);
+    
+    _mouseJoint->SetTarget(locationWorld);
+    
+}
+
+-(void)ccTouchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    if (_mouseJoint) {
+        _world->DestroyJoint(_mouseJoint);
+        _mouseJoint = NULL;
+    }
+    
+}
+
+- (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (_mouseJoint) {
+        _world->DestroyJoint(_mouseJoint);
+        _mouseJoint = NULL;
+    }  
 }
 
 

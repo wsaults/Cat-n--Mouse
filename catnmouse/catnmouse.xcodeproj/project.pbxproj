@@ -12,6 +12,7 @@
 		BE0D3D89151FBA50007345E5 /* moles_bg-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = BE0D3D87151FBA50007345E5 /* moles_bg-hd.png */; };
 		BE0D3D8A151FBA50007345E5 /* moles_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = BE0D3D88151FBA50007345E5 /* moles_bg.png */; };
 		BE0D3DA3151FF4C9007345E5 /* CCMenuPopup.mm in Sources */ = {isa = PBXBuildFile; fileRef = BEE04479151EDE4D00A9B122 /* CCMenuPopup.mm */; };
+		BE4E6FC3152D4AEC004AC04A /* MyContactListener.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4E6FC2152D4AEC004AC04A /* MyContactListener.m */; };
 		BE531CBA151CEE7500541B9C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE531CB9151CEE7500541B9C /* QuartzCore.framework */; };
 		BE531CBC151CEE7500541B9C /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE531CBB151CEE7500541B9C /* OpenGLES.framework */; };
 		BE531CBE151CEE7500541B9C /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE531CBD151CEE7500541B9C /* OpenAL.framework */; };
@@ -191,6 +192,8 @@
 		BE0D3DA0151FEE3B007345E5 /* moles-hd.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = "moles-hd.pvr.ccz"; sourceTree = "<group>"; };
 		BE0D3DA1151FEE3B007345E5 /* moles.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = moles.plist; sourceTree = "<group>"; };
 		BE0D3DA2151FEE3B007345E5 /* moles.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = moles.pvr.ccz; sourceTree = "<group>"; };
+		BE4E6FC1152D4AEC004AC04A /* MyContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyContactListener.h; sourceTree = "<group>"; };
+		BE4E6FC2152D4AEC004AC04A /* MyContactListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyContactListener.m; sourceTree = "<group>"; };
 		BE531CB5151CEE7500541B9C /* catnmouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = catnmouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE531CB9151CEE7500541B9C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BE531CBB151CEE7500541B9C /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -617,6 +620,8 @@
 				BEE0446E151ED73C00A9B122 /* PopUp.h */,
 				BEE0446F151ED73C00A9B122 /* PopUp.mm */,
 				BEE0447A151EE02300A9B122 /* Constants.h */,
+				BE4E6FC1152D4AEC004AC04A /* MyContactListener.h */,
+				BE4E6FC2152D4AEC004AC04A /* MyContactListener.m */,
 				BE531CCA151CEE7500541B9C /* Resources */,
 				BE531CDE151CEE7500541B9C /* libs */,
 				BE531E8A151CEE7800541B9C /* Supporting Files */,
@@ -1324,6 +1329,7 @@
 				BE531EA7151CF18E00541B9C /* Game.mm in Sources */,
 				BEE04470151ED73C00A9B122 /* PopUp.mm in Sources */,
 				BEFE4730151FB77F0052CDC6 /* GameButton.mm in Sources */,
+				BE4E6FC3152D4AEC004AC04A /* MyContactListener.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
