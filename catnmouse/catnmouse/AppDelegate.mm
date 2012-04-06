@@ -160,10 +160,10 @@
 	[[CCDirector sharedDirector] setNextDeltaTimeZero:YES];
 }
 
--(void)finishedWithScore: (int)score
+-(void)finishedWithScore: (double)score
 {
     if (score > [self getHighScore]) {
-        [[NSUserDefaults standardUserDefaults] setInteger:score forKey:kHighScoreKey];
+        [[NSUserDefaults standardUserDefaults] setDouble:score forKey:kHighScoreKey];
         [wiz reportScore:score forLeaderboard:kHighScoreKey];
     }
     timesPlayed++;
@@ -174,9 +174,9 @@
     }
 }
 
--(int)getHighScore
+-(double)getHighScore
 {
-    return [[NSUserDefaults standardUserDefaults] integerForKey:kHighScoreKey];
+    return [[NSUserDefaults standardUserDefaults] doubleForKey:kHighScoreKey];
 }
 #pragma mark -------
 

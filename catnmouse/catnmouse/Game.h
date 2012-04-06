@@ -22,7 +22,7 @@
     double gameTime;
     CGSize s;
     bool isPaused;
-    int score;
+    double score;
     
     b2Vec2 gravity;
     b2World *_world;

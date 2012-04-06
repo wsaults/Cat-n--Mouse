@@ -11,13 +11,13 @@
 
 @interface GKWizard : NSObject {
     BOOL isLoggedinToGC;
-    int highScore;
+    double highScore;
 }
 
 
--(void)reportScore: (int)score forLeaderboard:(NSString *)leaderboard;
+-(void)reportScore: (double)score forLeaderboard:(NSString *)leaderboard;
 -(bool)isGameCenterAvailable;
 -(void)authenticateLocalPlayer;
--(int)getHighScore;
+-(double)getHighScore;
 
 @end

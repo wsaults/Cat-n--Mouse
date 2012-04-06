@@ -22,8 +22,8 @@
 
 @property (nonatomic, retain) UIWindow *window;
 
-- (void)finishedWithScore:(int)score;
-- (int)getHighScore;
+- (void)finishedWithScore:(double)score;
+- (double)getHighScore;
 - (void)pause;
 - (void)resume;
 - (BOOL)isGameScene;

@@ -214,7 +214,7 @@
 {    
     if (!isPaused) {
         gameTime += dt;
-        
+        score = gameTime;
         NSString *string = [[NSString alloc] initWithFormat:@"%2.2f",gameTime];
         [highScore setString:string];
     
@@ -278,7 +278,6 @@
     //        [self chooseWhichMoleToMake];
     //        timeElapsed = 0;
     //    }
-    
 }
 
 -(void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -366,6 +365,7 @@
     //    }
     
     [delegate finishedWithScore:score];
+    CCLOG(@"Game over score is: %f", score);
     [self unscheduleAllSelectors];
     [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
     

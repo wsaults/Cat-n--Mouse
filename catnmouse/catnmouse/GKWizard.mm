@@ -17,14 +17,14 @@
     self = [super init];
     if (self) {
         // Initialization code here.
-        highScore = [[NSUserDefaults standardUserDefaults] integerForKey:kHighScoreKey];
+        highScore = [[NSUserDefaults standardUserDefaults] doubleForKey:kHighScoreKey];
         [self authenticateLocalPlayer];
     }
     
     return self;
 }
 
--(void)reportScore: (int)score forLeaderboard:(NSString *)leaderboard
+-(void)reportScore: (double)score forLeaderboard:(NSString *)leaderboard
 {
     if (![self isGameCenterAvailable]) {
         return;
@@ -69,7 +69,7 @@
 	}];
 }
 
-- (void) reportScore: (int64_t) score forCategory: (NSString*) category
+- (void) reportScore: (double) score forCategory: (NSString*) category
 {
     
 }
@@ -88,7 +88,7 @@
     return (gcClass && osVersionSupported);
 }
 
--(int)getHighScore
+-(double)getHighScore
 {
     return highScore;
 }
