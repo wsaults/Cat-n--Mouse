@@ -19,24 +19,33 @@
     AppDelegate *delegate;
     CCMenuItemSprite *pauseButton;
     
-    float timeElapsed;
+    double gameTime;
     CGSize s;
     bool isPaused;
     int score;
     
+    b2Vec2 gravity;
     b2World *_world;
     b2Body *_groundBody;
     b2Fixture *_bottomFixture;
+    
+    // Cat 1
+    b2FixtureDef cat1ShapeDef;
     b2Fixture *_cat1Fixture;
     
+    // Cat 2
+    b2FixtureDef cat2ShapeDef;
     b2Fixture *_cat2Fixture;
     
+    // Mouse
     b2Body *_mouseBody;
     b2Fixture *_mouseFixture;
     
     b2MouseJoint *_mouseJoint;
     
     MyContactListener *_contactListener;
+    
+    CCLabelTTF *highScore;
     
 }
 

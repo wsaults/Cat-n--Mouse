@@ -53,7 +53,10 @@
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:fileName];
     
     [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGB565];
-    CCSprite *bg = [CCSprite spriteWithFile:[NSString stringWithFormat:@"%@_bg.png", [delegate getCurrentSkin]]];
+//    CCSprite *bg = [CCSprite spriteWithFile:[NSString stringWithFormat:@"%@_bg.png", [delegate getCurrentSkin]]];
+    
+    CCSprite *bg = [CCSprite spriteWithFile:[NSString stringWithFormat:@"cat_bg.png"]];
+    
     bg.anchorPoint = ccp(0,0);
     [self addChild:bg z:-1];
     [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA4444];
@@ -72,27 +75,48 @@
     CGSize winSize = [CCDirector sharedDirector].winSize;
     
     // Create a world
-    b2Vec2 gravity = b2Vec2(0.0f, 0.0f);
+    gravity = b2Vec2(0.0f, 0.0f);
     bool doSleep = true;
     _world = new b2World(gravity, doSleep);
     
     // Create edges around the entire screen
     b2BodyDef groundBodyDef;
+    
+    // Right bounds
     groundBodyDef.position.Set(0,0);
     _groundBody = _world->CreateBody(&groundBodyDef);
     b2PolygonShape groundBox;
     b2FixtureDef groundBoxDef;
     groundBoxDef.shape = &groundBox;
-    groundBox.SetAsEdge(b2Vec2(0,0), b2Vec2(winSize.width/PTM_RATIO, 0));
+    
+    // Bottom bounds
+    groundBox.SetAsEdge(b2Vec2(0,0), b2Vec2(winSize.width/PTM_RATIO,0));
     _bottomFixture = _groundBody->CreateFixture(&groundBoxDef);
+    
+    // Left bounds
     groundBox.SetAsEdge(b2Vec2(0,0), b2Vec2(0, winSize.height/PTM_RATIO));
     _groundBody->CreateFixture(&groundBoxDef);
+    
+    // Top bounds
     groundBox.SetAsEdge(b2Vec2(0, winSize.height/PTM_RATIO), b2Vec2(winSize.width/PTM_RATIO, 
                                                                     winSize.height/PTM_RATIO));
     _groundBody->CreateFixture(&groundBoxDef);
     groundBox.SetAsEdge(b2Vec2(winSize.width/PTM_RATIO, winSize.height/PTM_RATIO), 
                         b2Vec2(winSize.width/PTM_RATIO, 0));
     _groundBody->CreateFixture(&groundBoxDef);
+    
+    // Body for ads
+    b2BodyDef bd;
+    bd.position.Set(0, 0);
+    b2Body* body = _world->CreateBody(&bd);
+    
+    b2PolygonShape shape;
+    shape.SetAsBox(winSize.width/PTM_RATIO, 1.5);  // The box's size
+    
+    b2FixtureDef fd;
+    fd.shape = &shape;
+    fd.density = 0.1f;
+    body->CreateFixture(&fd);
     
     // Create sprite and add it to the layer
     CCSprite *cat1 = [CCSprite spriteWithFile:@"Ball.png" 
@@ -114,10 +138,9 @@
     circle.m_radius = 26.0/PTM_RATIO;
     
     // Create shape definition and add to body
-    b2FixtureDef cat1ShapeDef;
     cat1ShapeDef.shape = &circle;
     cat1ShapeDef.density = 1.0f;
-    cat1ShapeDef.friction = 0.f;
+    cat1ShapeDef.friction = 0.001f;
     cat1ShapeDef.restitution = 1.0f;
     _cat1Fixture = cat1Body->CreateFixture(&cat1ShapeDef);
     
@@ -128,22 +151,21 @@
     // Create sprite and add it to the layer
     CCSprite *cat2 = [CCSprite spriteWithFile:@"Ball.png" 
                                          rect:CGRectMake(0, 0, 52, 52)];
-    cat2.position = ccp(300, 25);
+    cat2.position = ccp(300, 100);
     cat2.tag = 2;
     [self addChild:cat2];
     
     // Create cat2 body 
     b2BodyDef cat2BodyDef;
     cat2BodyDef.type = b2_dynamicBody;
-    cat2BodyDef.position.Set(300/PTM_RATIO, 25/PTM_RATIO);
+    cat2BodyDef.position.Set(300/PTM_RATIO, 100/PTM_RATIO);
     cat2BodyDef.userData = cat2;
     b2Body * cat2Body = _world->CreateBody(&cat2BodyDef);
     
     // Create shape definition and add to body
-    b2FixtureDef cat2ShapeDef;
     cat2ShapeDef.shape = &circle;
-    cat2ShapeDef.density = .5f;
-    cat2ShapeDef.friction = 0.f;
+    cat2ShapeDef.density = 1.0f;
+    cat2ShapeDef.friction = 0.001f;
     cat2ShapeDef.restitution = 1.0f;
     _cat2Fixture = cat2Body->CreateFixture(&cat2ShapeDef);
     
@@ -152,7 +174,7 @@
     
     // Create mouse and add it to the layer
     CCSprite *mouse = [CCSprite spriteWithFile:@"Ball.png" rect:CGRectMake(0, 0, 52, 52)];
-    mouse.position = ccp(winSize.width/2, 50);
+    mouse.position = ccp(winSize.width/2, winSize.height/3);
     [self addChild:mouse];
     
     // Create paddle body
@@ -170,7 +192,7 @@
     b2FixtureDef mouseShapeDef;
     mouseShapeDef.shape = &mouseShape;
     mouseShapeDef.density = 10.0f;
-    mouseShapeDef.friction = 0.6f;
+    mouseShapeDef.friction = 0.f;
     mouseShapeDef.restitution = 0.001f;
     _mouseFixture = _mouseBody->CreateFixture(&mouseShapeDef);
     
@@ -178,11 +200,29 @@
     _contactListener = new MyContactListener();
     _world->SetContactListener(_contactListener);
     
+    int fSize = 24;
+    gameTime = 0.00f;
+    highScore = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%f", gameTime] fontName:@"TOONISH.ttf" fontSize:fSize];
+    highScore.anchorPoint = ccp(1,1);
+    highScore.position = ccp(s.width,s.height);
+    [self addChild:highScore];
+    
     [self schedule:@selector(tick:)];
 }
 
 - (void)tick:(ccTime)dt
-{
+{    
+    if (!isPaused) {
+        gameTime += dt;
+        
+        NSString *string = [[NSString alloc] initWithFormat:@"%2.2f",gameTime];
+        [highScore setString:string];
+    
+        if (gameTime > 3.0f && gameTime < 4.0f) {
+        }
+    }
+    
+    
     _world->Step(dt, 10, 10);    
     for(b2Body *b = _world->GetBodyList(); b; b=b->GetNext()) {    
         if (b->GetUserData() != NULL) {
