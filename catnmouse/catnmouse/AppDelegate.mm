@@ -46,7 +46,7 @@
 	// Init the window
 	window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	timesPlayed = [[NSUserDefaults standardUserDefaults] integerForKey:kTimesPlayed];
-    currentSkin = SKIN_MOLE;
+    currentSkin = SKIN;
 	// Try to use CADisplayLink director
 	// if it fails (SDK < 3.1) use the default director
 	if( ! [CCDirector setDirectorType:kCCDirectorTypeDisplayLink] )

@@ -16,6 +16,7 @@
 #import "CCMenuPopup.h"
 
 #define PTM_RATIO 32.0
+#define NUMBER_OF_CATS 0
 
 @implementation Game
 
@@ -61,10 +62,16 @@
     [self addChild:bg z:-1];
     [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA4444];
     
+    // Pause Button
     pauseButton = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithSpriteFrameName:@"pause_button.png"] selectedSprite:NULL target:self selector:@selector(pauseGame)];
     CCMenu *menu = [CCMenu menuWithItems:pauseButton, nil];
-    pauseButton.position = ccp(s.width/2 - pauseButton.contentSize.width/2, (-s.height/2) + pauseButton.contentSize.height/2);
+    pauseButton.position = ccp(s.width/2 - pauseButton.contentSize.width/2, (-s.height/2) + pauseButton.contentSize.height*1.5);
     [self addChild:menu z:100];
+    
+    int fSize = 28;
+    CCLabelTTF *pause = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"ll"] fontName:@"SF_Cartoonist_Hand_Bold.ttf" fontSize:fSize];
+    pause.position = ccp(s.width/1.085, s.height/6.7);
+    [self addChild:pause z:101];
     
     [self startGame];
 }
@@ -148,6 +155,7 @@
     cat1Body->ApplyLinearImpulse(force, cat1BodyDef.position);
     // end cat1
     
+    // Cat 2
     // Create sprite and add it to the layer
     CCSprite *cat2 = [CCSprite spriteWithFile:@"Ball.png" 
                                          rect:CGRectMake(0, 0, 52, 52)];
@@ -170,7 +178,8 @@
     _cat2Fixture = cat2Body->CreateFixture(&cat2ShapeDef);
     
     cat2Body->ApplyLinearImpulse(force, cat2BodyDef.position);
-
+    // end cat 2
+    numberOfCats = 2;
     
     // Create mouse and add it to the layer
     CCSprite *mouse = [CCSprite spriteWithFile:@"Ball.png" rect:CGRectMake(0, 0, 52, 52)];
@@ -202,7 +211,7 @@
     
     int fSize = 24;
     gameTime = 0.00f;
-    highScore = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%f", gameTime] fontName:@"TOONISH.ttf" fontSize:fSize];
+    highScore = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%f", gameTime] fontName:@"SF_Cartoonist_Hand_Bold.ttf" fontSize:fSize];
     highScore.anchorPoint = ccp(1,1);
     highScore.position = ccp(s.width,s.height);
     [self addChild:highScore];
@@ -218,7 +227,106 @@
         NSString *string = [[NSString alloc] initWithFormat:@"%2.2f",gameTime];
         [highScore setString:string];
     
-        if (gameTime > 3.0f && gameTime < 4.0f) {
+        if (gameTime > 3.0f && numberOfCats == 2) {
+            // Create circle shape
+            b2CircleShape circle;
+            circle.m_radius = 26.0/PTM_RATIO;
+            
+            b2Vec2 force = b2Vec2(10, 10);
+            
+            // Cat 3
+            // Create sprite and add it to the layer
+            CCSprite *cat3 = [CCSprite spriteWithFile:@"Ball.png" 
+                                                 rect:CGRectMake(0, 0, 52, 52)];
+            cat3.position = ccp(50, 50);
+            cat3.tag = 3;
+            [self addChild:cat3];
+            
+            // Create cat3 body 
+            b2BodyDef cat3BodyDef;
+            cat3BodyDef.type = b2_dynamicBody;
+            cat3BodyDef.position.Set(50/PTM_RATIO, 50/PTM_RATIO);
+            cat3BodyDef.userData = cat3;
+            b2Body * cat3Body = _world->CreateBody(&cat3BodyDef);
+            
+            // Create shape definition and add to body
+            cat3ShapeDef.shape = &circle;
+            cat3ShapeDef.density = 1.0f;
+            cat3ShapeDef.friction = 0.001f;
+            cat3ShapeDef.restitution = 1.0f;
+            _cat3Fixture = cat3Body->CreateFixture(&cat3ShapeDef);
+            
+            cat3Body->ApplyLinearImpulse(force, cat3BodyDef.position);
+            // end cat 3
+            numberOfCats++;
+        }
+        
+        if (gameTime > 8.0f && numberOfCats == 3) {
+            // Create circle shape
+            b2CircleShape circle;
+            circle.m_radius = 26.0/PTM_RATIO;
+            
+            b2Vec2 force = b2Vec2(10, 10);
+            
+            // Cat 4
+            // Create sprite and add it to the layer
+            CCSprite *cat4 = [CCSprite spriteWithFile:@"Ball.png" 
+                                                 rect:CGRectMake(0, 0, 52, 52)];
+            cat4.position = ccp(50, 50);
+            cat4.tag = 4;
+            [self addChild:cat4];
+            
+            // Create cat4 body 
+            b2BodyDef cat4BodyDef;
+            cat4BodyDef.type = b2_dynamicBody;
+            cat4BodyDef.position.Set(50/PTM_RATIO, 50/PTM_RATIO);
+            cat4BodyDef.userData = cat4;
+            b2Body * cat4Body = _world->CreateBody(&cat4BodyDef);
+            
+            // Create shape definition and add to body
+            cat4ShapeDef.shape = &circle;
+            cat4ShapeDef.density = 1.0f;
+            cat4ShapeDef.friction = 0.001f;
+            cat4ShapeDef.restitution = 1.0f;
+            _cat4Fixture = cat4Body->CreateFixture(&cat4ShapeDef);
+            
+            cat4Body->ApplyLinearImpulse(force, cat4BodyDef.position);
+            // end cat 4
+            numberOfCats++;
+        }
+        
+        if (gameTime > 15.0f && numberOfCats == 4) {
+            // Create circle shape
+            b2CircleShape circle;
+            circle.m_radius = 26.0/PTM_RATIO;
+            
+            b2Vec2 force = b2Vec2(10, 10);
+            
+            // Cat 5
+            // Create sprite and add it to the layer
+            CCSprite *cat5 = [CCSprite spriteWithFile:@"Ball.png" 
+                                                 rect:CGRectMake(0, 0, 52, 52)];
+            cat5.position = ccp(100, 100);
+            cat5.tag = 5;
+            [self addChild:cat5];
+            
+            // Create cat5 body 
+            b2BodyDef cat5BodyDef;
+            cat5BodyDef.type = b2_dynamicBody;
+            cat5BodyDef.position.Set(100/PTM_RATIO, 100/PTM_RATIO);
+            cat5BodyDef.userData = cat5;
+            b2Body * cat5Body = _world->CreateBody(&cat5BodyDef);
+            
+            // Create shape definition and add to body
+            cat5ShapeDef.shape = &circle;
+            cat5ShapeDef.density = 1.0f;
+            cat5ShapeDef.friction = 0.001f;
+            cat5ShapeDef.restitution = 1.0f;
+            _cat5Fixture = cat5Body->CreateFixture(&cat5ShapeDef);
+            
+            cat5Body->ApplyLinearImpulse(force, cat5BodyDef.position);
+            // end cat 5
+            numberOfCats++;
         }
     }
     
@@ -261,6 +369,24 @@
         if ((contact.fixtureA == _mouseFixture && contact.fixtureB == _cat2Fixture) ||
             (contact.fixtureA == _cat2Fixture && contact.fixtureB == _mouseFixture)) {
             CCLOG(@"Cat2 got the mouse!");
+            [self gameOver];
+        }
+        
+        if ((contact.fixtureA == _mouseFixture && contact.fixtureB == _cat3Fixture) ||
+            (contact.fixtureA == _cat3Fixture && contact.fixtureB == _mouseFixture)) {
+            CCLOG(@"Cat3 got the mouse!");
+            [self gameOver];
+        }
+        
+        if ((contact.fixtureA == _mouseFixture && contact.fixtureB == _cat4Fixture) ||
+            (contact.fixtureA == _cat4Fixture && contact.fixtureB == _mouseFixture)) {
+            CCLOG(@"Cat4 got the mouse!");
+            [self gameOver];
+        }
+        
+        if ((contact.fixtureA == _mouseFixture && contact.fixtureB == _cat5Fixture) ||
+            (contact.fixtureA == _cat5Fixture && contact.fixtureB == _mouseFixture)) {
+            CCLOG(@"Cat5 got the mouse!");
             [self gameOver];
         }
     }

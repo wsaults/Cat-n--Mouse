@@ -8,5 +8,5 @@
 #define kHighScoreKey @"com.utvca.catnmouse.highscore"
 #define kDidRate @"ratedthegame"
 
-#define SKIN_MOLE @"moles"
+#define SKIN @"catnmouse"
 

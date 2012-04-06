@@ -29,6 +29,8 @@
     b2Body *_groundBody;
     b2Fixture *_bottomFixture;
     
+    int numberOfCats;
+    
     // Cat 1
     b2FixtureDef cat1ShapeDef;
     b2Fixture *_cat1Fixture;
@@ -36,6 +38,18 @@
     // Cat 2
     b2FixtureDef cat2ShapeDef;
     b2Fixture *_cat2Fixture;
+    
+    // Cat 3
+    b2FixtureDef cat3ShapeDef;
+    b2Fixture *_cat3Fixture;
+    
+    // Cat 4
+    b2FixtureDef cat4ShapeDef;
+    b2Fixture *_cat4Fixture;
+    
+    // Cat 5
+    b2FixtureDef cat5ShapeDef;
+    b2Fixture *_cat5Fixture;
     
     // Mouse
     b2Body *_mouseBody;

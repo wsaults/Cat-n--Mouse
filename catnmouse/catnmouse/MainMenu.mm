@@ -31,11 +31,11 @@
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:fileName];
         
         int fSize = 24;
-        CCLabelTTF *highScore = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"High Score: %2.2f", [delegate getHighScore]] fontName:@"TOONISH.ttf" fontSize:fSize];
+        CCLabelTTF *highScore = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"High Score: %2.2f", [delegate getHighScore]] fontName:@"SF_Cartoonist_Hand_Bold.ttf" fontSize:fSize];
         highScore.anchorPoint = ccp(1,1);
         highScore.position = ccp(s.width,s.height);
         [self addChild:highScore];
-        [CCMenuItemFont setFontName:@"TOONISH.ttf"];
+        [CCMenuItemFont setFontName:@"SF_Cartoonist_Hand_Bold.ttf"];
         fSize = [CCMenuItemFont fontSize];
         [CCMenuItemFont setFontSize:48];
         

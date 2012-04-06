@@ -39,10 +39,10 @@ enum tags
         window.position = ccp(s.width/2, s.height/2);
         window.scale = .9;
         int fSize = 36;
-        CCLabelTTF *title = [CCLabelTTF labelWithString:titleText fontName:@"TOONISH" fontSize:fSize];
+        CCLabelTTF *title = [CCLabelTTF labelWithString:titleText fontName:@"Helvetica" fontSize:fSize];
         title.opacity = (float)255 * .25f;
         title.position = ccp(window.position.x, window.position.y + window.contentSize.height/3);
-        CCLabelTTF *desc = [CCLabelTTF labelWithString:description fontName:@"TOONISH" fontSize:fSize/2];
+        CCLabelTTF *desc = [CCLabelTTF labelWithString:description fontName:@"Helvetica" fontSize:fSize/2];
         
         desc.position = ccp(title.position.x, title.position.y - title.contentSize.height);
         desc.opacity = (float)255 * .75f;

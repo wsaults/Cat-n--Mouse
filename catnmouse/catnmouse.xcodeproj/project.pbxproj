@@ -170,6 +170,11 @@
 		BE603BFD152E7E5C001DBEFE /* title-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = BE603BFC152E7E5C001DBEFE /* title-hd.png */; };
 		BE7C4231152E160000BE3297 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE7C4230152E160000BE3297 /* GameKit.framework */; };
 		BE99558E152E38A10002A00C /* Ball.png in Resources */ = {isa = PBXBuildFile; fileRef = BE99558D152E38A10002A00C /* Ball.png */; };
+		BEA963EF152F42EE00D1149D /* catnmouse-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = BEA963EB152F42EE00D1149D /* catnmouse-hd.plist */; };
+		BEA963F0152F42EE00D1149D /* catnmouse-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = BEA963EC152F42EE00D1149D /* catnmouse-hd.png */; };
+		BEA963F1152F42EE00D1149D /* catnmouse.plist in Resources */ = {isa = PBXBuildFile; fileRef = BEA963ED152F42EE00D1149D /* catnmouse.plist */; };
+		BEA963F2152F42EE00D1149D /* catnmouse.png in Resources */ = {isa = PBXBuildFile; fileRef = BEA963EE152F42EE00D1149D /* catnmouse.png */; };
+		BEA963F6152F513E00D1149D /* SF_Cartoonist_Hand_Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEA963F5152F50F100D1149D /* SF_Cartoonist_Hand_Bold.ttf */; };
 		BEADA5411528DE4700865AAD /* moles-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE0D3D9F151FEE3B007345E5 /* moles-hd.plist */; };
 		BEADA5421528DE4900865AAD /* moles-hd.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = BE0D3DA0151FEE3B007345E5 /* moles-hd.pvr.ccz */; };
 		BEADA5431528DE4B00865AAD /* moles.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE0D3DA1151FEE3B007345E5 /* moles.plist */; };
@@ -177,14 +182,6 @@
 		BEBD7968152E10C3003C78F1 /* Ball-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = BEBD7967152E10C3003C78F1 /* Ball-hd.png */; };
 		BEBD796C152E1386003C78F1 /* GKWizard.mm in Sources */ = {isa = PBXBuildFile; fileRef = BEBD796A152E11BA003C78F1 /* GKWizard.mm */; };
 		BEE04470151ED73C00A9B122 /* PopUp.mm in Sources */ = {isa = PBXBuildFile; fileRef = BEE0446F151ED73C00A9B122 /* PopUp.mm */; };
-		BEE04487151EE7DA00A9B122 /* 24-hd.fnt in Resources */ = {isa = PBXBuildFile; fileRef = BEE0447F151EE7DA00A9B122 /* 24-hd.fnt */; };
-		BEE04488151EE7DA00A9B122 /* 24-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = BEE04480151EE7DA00A9B122 /* 24-hd.png */; };
-		BEE04489151EE7DA00A9B122 /* 24.fnt in Resources */ = {isa = PBXBuildFile; fileRef = BEE04481151EE7DA00A9B122 /* 24.fnt */; };
-		BEE0448A151EE7DA00A9B122 /* 24.png in Resources */ = {isa = PBXBuildFile; fileRef = BEE04482151EE7DA00A9B122 /* 24.png */; };
-		BEE0448B151EE7DA00A9B122 /* 48.fnt in Resources */ = {isa = PBXBuildFile; fileRef = BEE04483151EE7DA00A9B122 /* 48.fnt */; };
-		BEE0448C151EE7DA00A9B122 /* 48.png in Resources */ = {isa = PBXBuildFile; fileRef = BEE04484151EE7DA00A9B122 /* 48.png */; };
-		BEE0448D151EE7DA00A9B122 /* TOONISH-hd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEE04485151EE7DA00A9B122 /* TOONISH-hd.ttf */; };
-		BEE0448E151EE7DA00A9B122 /* TOONISH.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEE04486151EE7DA00A9B122 /* TOONISH.ttf */; };
 		BEFE4730151FB77F0052CDC6 /* GameButton.mm in Sources */ = {isa = PBXBuildFile; fileRef = BEE0447D151EE46000A9B122 /* GameButton.mm */; };
 /* End PBXBuildFile section */
 
@@ -516,6 +513,11 @@
 		BE603BFC152E7E5C001DBEFE /* title-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "title-hd.png"; sourceTree = "<group>"; };
 		BE7C4230152E160000BE3297 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		BE99558D152E38A10002A00C /* Ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ball.png; sourceTree = "<group>"; };
+		BEA963EB152F42EE00D1149D /* catnmouse-hd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "catnmouse-hd.plist"; sourceTree = "<group>"; };
+		BEA963EC152F42EE00D1149D /* catnmouse-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "catnmouse-hd.png"; sourceTree = "<group>"; };
+		BEA963ED152F42EE00D1149D /* catnmouse.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = catnmouse.plist; sourceTree = "<group>"; };
+		BEA963EE152F42EE00D1149D /* catnmouse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = catnmouse.png; sourceTree = "<group>"; };
+		BEA963F5152F50F100D1149D /* SF_Cartoonist_Hand_Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SF_Cartoonist_Hand_Bold.ttf; sourceTree = "<group>"; };
 		BEADA7401528ED6100865AAD /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		BEBD7967152E10C3003C78F1 /* Ball-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ball-hd.png"; sourceTree = "<group>"; };
 		BEBD7969152E11BA003C78F1 /* GKWizard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKWizard.h; sourceTree = "<group>"; };
@@ -527,14 +529,6 @@
 		BEE0447A151EE02300A9B122 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		BEE0447C151EE46000A9B122 /* GameButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameButton.h; sourceTree = "<group>"; };
 		BEE0447D151EE46000A9B122 /* GameButton.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = GameButton.mm; sourceTree = "<group>"; };
-		BEE0447F151EE7DA00A9B122 /* 24-hd.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "24-hd.fnt"; sourceTree = "<group>"; };
-		BEE04480151EE7DA00A9B122 /* 24-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "24-hd.png"; sourceTree = "<group>"; };
-		BEE04481151EE7DA00A9B122 /* 24.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 24.fnt; sourceTree = "<group>"; };
-		BEE04482151EE7DA00A9B122 /* 24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 24.png; sourceTree = "<group>"; };
-		BEE04483151EE7DA00A9B122 /* 48.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 48.fnt; sourceTree = "<group>"; };
-		BEE04484151EE7DA00A9B122 /* 48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 48.png; sourceTree = "<group>"; };
-		BEE04485151EE7DA00A9B122 /* TOONISH-hd.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TOONISH-hd.ttf"; sourceTree = "<group>"; };
-		BEE04486151EE7DA00A9B122 /* TOONISH.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TOONISH.ttf; sourceTree = "<group>"; };
 		BEFE472D151FB5D10052CDC6 /* CCSprite+DisableTouch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CCSprite+DisableTouch.h"; sourceTree = "<group>"; };
 		BEFE472E151FB5D10052CDC6 /* CCSprite+DisableTouch.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = "CCSprite+DisableTouch.mm"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -562,6 +556,10 @@
 		BE0D3D86151FBA31007345E5 /* art */ = {
 			isa = PBXGroup;
 			children = (
+				BEA963EB152F42EE00D1149D /* catnmouse-hd.plist */,
+				BEA963EC152F42EE00D1149D /* catnmouse-hd.png */,
+				BEA963ED152F42EE00D1149D /* catnmouse.plist */,
+				BEA963EE152F42EE00D1149D /* catnmouse.png */,
 				BE0D3D9F151FEE3B007345E5 /* moles-hd.plist */,
 				BE0D3DA0151FEE3B007345E5 /* moles-hd.pvr.ccz */,
 				BE0D3DA1151FEE3B007345E5 /* moles.plist */,
@@ -580,7 +578,6 @@
 		BE531CAA151CEE7500541B9C = {
 			isa = PBXGroup;
 			children = (
-				BEE0447E151EE7DA00A9B122 /* fonts */,
 				BE531CC9151CEE7500541B9C /* catnmouse */,
 				BE531CB8151CEE7500541B9C /* Frameworks */,
 				BE531CB6151CEE7500541B9C /* Products */,
@@ -649,6 +646,7 @@
 		BE531CCA151CEE7500541B9C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BEA963F5152F50F100D1149D /* SF_Cartoonist_Hand_Bold.ttf */,
 				BE0D3D86151FBA31007345E5 /* art */,
 				BE531CCB151CEE7500541B9C /* Default.png */,
 				BE531CCD151CEE7500541B9C /* fps_images.png */,
@@ -1107,21 +1105,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		BEE0447E151EE7DA00A9B122 /* fonts */ = {
-			isa = PBXGroup;
-			children = (
-				BEE0447F151EE7DA00A9B122 /* 24-hd.fnt */,
-				BEE04480151EE7DA00A9B122 /* 24-hd.png */,
-				BEE04481151EE7DA00A9B122 /* 24.fnt */,
-				BEE04482151EE7DA00A9B122 /* 24.png */,
-				BEE04483151EE7DA00A9B122 /* 48.fnt */,
-				BEE04484151EE7DA00A9B122 /* 48.png */,
-				BEE04485151EE7DA00A9B122 /* TOONISH-hd.ttf */,
-				BEE04486151EE7DA00A9B122 /* TOONISH.ttf */,
-			);
-			path = fonts;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1172,6 +1155,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEA963F6152F513E00D1149D /* SF_Cartoonist_Hand_Bold.ttf in Resources */,
+				BEA963EF152F42EE00D1149D /* catnmouse-hd.plist in Resources */,
+				BEA963F0152F42EE00D1149D /* catnmouse-hd.png in Resources */,
+				BEA963F1152F42EE00D1149D /* catnmouse.plist in Resources */,
+				BEA963F2152F42EE00D1149D /* catnmouse.png in Resources */,
 				BEADA5411528DE4700865AAD /* moles-hd.plist in Resources */,
 				BEADA5421528DE4900865AAD /* moles-hd.pvr.ccz in Resources */,
 				BEADA5441528DE4C00865AAD /* moles.pvr.ccz in Resources */,
@@ -1186,14 +1174,6 @@
 				BE531CDA151CEE7500541B9C /* Icon@2x.png in Resources */,
 				BE531CDD151CEE7500541B9C /* iTunesArtwork in Resources */,
 				BE531E9C151CEE7800541B9C /* blocks.png in Resources */,
-				BEE04487151EE7DA00A9B122 /* 24-hd.fnt in Resources */,
-				BEE04488151EE7DA00A9B122 /* 24-hd.png in Resources */,
-				BEE04489151EE7DA00A9B122 /* 24.fnt in Resources */,
-				BEE0448A151EE7DA00A9B122 /* 24.png in Resources */,
-				BEE0448B151EE7DA00A9B122 /* 48.fnt in Resources */,
-				BEE0448C151EE7DA00A9B122 /* 48.png in Resources */,
-				BEE0448D151EE7DA00A9B122 /* TOONISH-hd.ttf in Resources */,
-				BEE0448E151EE7DA00A9B122 /* TOONISH.ttf in Resources */,
 				BE0D3D89151FBA50007345E5 /* moles_bg-hd.png in Resources */,
 				BE0D3D8A151FBA50007345E5 /* moles_bg.png in Resources */,
 				BEBD7968152E10C3003C78F1 /* Ball-hd.png in Resources */,
