@@ -1,9 +1,5 @@
 //
 //  GKWizard.m
-//  Mole It
-//
-//  Created by Todd Perkins on 4/25/11.
-//  Copyright 2011 Wedgekase Games, LLC. All rights reserved.
 //
 
 #import "GKWizard.h"

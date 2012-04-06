@@ -21,6 +21,7 @@
 }
 
 @property (nonatomic, retain) UIWindow *window;
+@property (nonatomic, retain) RootViewController *viewController;
 
 - (void)finishedWithScore:(double)score;
 - (double)getHighScore;

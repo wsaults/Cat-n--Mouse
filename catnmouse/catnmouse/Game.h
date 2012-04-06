@@ -10,9 +10,25 @@
 #import "Box2D.h"
 #import "MyContactListener.h"
 
+#import "AdWhirlView.h"
+#import "AdWhirlDelegateProtocol.h"
+#import "AppDelegate.h"
+#import "RootViewController.h"
+
+enum GameStatePP {
+    kGameStatePlaying,
+    kGameStatePaused
+};
+
 @class AppDelegate;
 
-@interface Game : CCLayer <CCStandardTouchDelegate>{
+@interface Game : CCLayer <CCStandardTouchDelegate, AdWhirlDelegate>{
+    
+    // Add inside @interface
+    RootViewController *viewController;
+    AdWhirlView *adWhirlView;
+    
+    enum GameStatePP _state;
     
     CCArray *bonus, *cats;
     CCLabelBMFont *scoreLabel;
@@ -62,6 +78,10 @@
     CCLabelTTF *highScore;
     
 }
+
+// Add after @interface
+@property(nonatomic,retain) AdWhirlView *adWhirlView;
+@property(nonatomic) enum GameStatePP state;
 
 -(void)pauseGame;
 -(void)resumeGame;

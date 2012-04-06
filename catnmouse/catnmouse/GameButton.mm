@@ -1,9 +1,5 @@
 //
 //  CCSprite+AddOns.m
-//  Mole It
-//
-//  Created by Todd Perkins on 7/28/11.
-//  Copyright 2011 Wedgekase Games, LLC. All rights reserved.
 //
 
 #import "GameButton.h"

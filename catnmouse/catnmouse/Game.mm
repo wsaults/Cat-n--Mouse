@@ -20,6 +20,8 @@
 
 @implementation Game
 
+@synthesize state = _state, adWhirlView;
+
 +(CCScene *) scene
 {
 	// 'scene' is an autorelease object.
@@ -38,7 +40,8 @@
 - (id)init
 {
     if((self = [super init])) {
-        
+        // Add at end of init
+        self.state = kGameStatePlaying;
     }
     return self;
 }
@@ -70,7 +73,7 @@
     
     int fSize = 28;
     CCLabelTTF *pause = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"ll"] fontName:@"SF_Cartoonist_Hand_Bold.ttf" fontSize:fSize];
-    pause.position = ccp(s.width/1.085, s.height/6.7);
+    pause.position = ccp(s.width/1.085, s.height/6.6);
     [self addChild:pause z:101];
     
     [self startGame];
@@ -126,7 +129,7 @@
     body->CreateFixture(&fd);
     
     // Create sprite and add it to the layer
-    CCSprite *cat1 = [CCSprite spriteWithFile:@"Ball.png" 
+    CCSprite *cat1 = [CCSprite spriteWithFile:@"cat1.png" 
                                          rect:CGRectMake(0, 0, 52, 52)];
     
     cat1.position = ccp(100, 100);
@@ -157,7 +160,7 @@
     
     // Cat 2
     // Create sprite and add it to the layer
-    CCSprite *cat2 = [CCSprite spriteWithFile:@"Ball.png" 
+    CCSprite *cat2 = [CCSprite spriteWithFile:@"cat2.png" 
                                          rect:CGRectMake(0, 0, 52, 52)];
     cat2.position = ccp(300, 100);
     cat2.tag = 2;
@@ -182,9 +185,9 @@
     numberOfCats = 2;
     
     // Create mouse and add it to the layer
-    CCSprite *mouse = [CCSprite spriteWithFile:@"Ball.png" rect:CGRectMake(0, 0, 52, 52)];
+    CCSprite *mouse = [CCSprite spriteWithFile:@"mouse.png" rect:CGRectMake(0, 0, 52, 52)];
     mouse.position = ccp(winSize.width/2, winSize.height/3);
-    [self addChild:mouse];
+    [self addChild:mouse z:105];
     
     // Create paddle body
     b2BodyDef mouseBodyDef;
@@ -236,7 +239,7 @@
             
             // Cat 3
             // Create sprite and add it to the layer
-            CCSprite *cat3 = [CCSprite spriteWithFile:@"Ball.png" 
+            CCSprite *cat3 = [CCSprite spriteWithFile:@"cat3.png" 
                                                  rect:CGRectMake(0, 0, 52, 52)];
             cat3.position = ccp(50, 50);
             cat3.tag = 3;
@@ -270,7 +273,7 @@
             
             // Cat 4
             // Create sprite and add it to the layer
-            CCSprite *cat4 = [CCSprite spriteWithFile:@"Ball.png" 
+            CCSprite *cat4 = [CCSprite spriteWithFile:@"cat4.png" 
                                                  rect:CGRectMake(0, 0, 52, 52)];
             cat4.position = ccp(50, 50);
             cat4.tag = 4;
@@ -304,7 +307,7 @@
             
             // Cat 5
             // Create sprite and add it to the layer
-            CCSprite *cat5 = [CCSprite spriteWithFile:@"Ball.png" 
+            CCSprite *cat5 = [CCSprite spriteWithFile:@"cat5text.png" 
                                                  rect:CGRectMake(0, 0, 52, 52)];
             cat5.position = ccp(100, 100);
             cat5.tag = 5;
@@ -390,6 +393,9 @@
             [self gameOver];
         }
     }
+    
+    // Random Cheese bonus!
+    int r = arc4random() % 10; // Random number from 0-10
     
     //timeElapsed += dt;
     
@@ -510,6 +516,7 @@
     if (isPaused) {
         return;
     }
+    
     CCMenuItemSprite *resumeButton = [CCMenuItemSprite itemFromNormalSprite:[GameButton buttonWithText:@"resume"] selectedSprite:NULL target:self selector:@selector(resumeGame)];
     CCMenuItemSprite *mainButton = [CCMenuItemSprite itemFromNormalSprite:[GameButton buttonWithText:@"main menu"] selectedSprite:NULL target:self selector:@selector(mainMenu)];
     
@@ -531,7 +538,6 @@
 - (void)resumeGame
 {
     pauseButton.visible = YES;
-    
     [self schedule:@selector(tick:)];
     [[SimpleAudioEngine sharedEngine] resumeBackgroundMusic];
     isPaused = NO;
@@ -557,13 +563,116 @@
     [self initializeGame];
 }
 
+- (void)onEnter
+{
+    //1
+    viewController = [(AppDelegate *)[[UIApplication sharedApplication] delegate] viewController];
+    //2
+    self.adWhirlView = [AdWhirlView requestAdWhirlViewWithDelegate:self];
+    //3
+    self.adWhirlView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin;
+    
+    //4
+    [adWhirlView updateAdWhirlConfig];
+    //5
+	CGSize adSize = [adWhirlView actualAdSize];
+    //6
+    CGSize winSize = [CCDirector sharedDirector].winSize;
+    //7
+	self.adWhirlView.frame = CGRectMake((winSize.width/2)-(adSize.width/2),winSize.height-adSize.height,winSize.width,adSize.height);
+    //8
+	self.adWhirlView.clipsToBounds = YES;
+    //9
+    [viewController.view addSubview:adWhirlView];
+    //10
+    [viewController.view bringSubviewToFront:adWhirlView];
+    //11
+    [super onEnter];
+}
+
 - (void)onExit
 {
     [[CCTouchDispatcher sharedDispatcher] removeAllDelegates];
+    
+    if (adWhirlView) {
+        [adWhirlView removeFromSuperview];
+        [adWhirlView replaceBannerViewWith:nil];
+        [adWhirlView ignoreNewAdRequests];
+        [adWhirlView setDelegate:nil];
+        self.adWhirlView = nil;
+    }
+    [super onExit];
+}
+
+- (void)adWhirlWillPresentFullScreenModal {
+    
+    if (self.state == kGameStatePlaying) {
+        
+        [[SimpleAudioEngine sharedEngine] pauseBackgroundMusic];
+        
+        [[CCDirector sharedDirector] pause];
+    }
+}
+
+- (void)adWhirlDidDismissFullScreenModal {
+    
+    if (self.state == kGameStatePaused)
+        return;
+    
+    else {
+        self.state = kGameStatePlaying;
+        [[SimpleAudioEngine sharedEngine] resumeBackgroundMusic];
+        [[CCDirector sharedDirector] resume];
+        
+    }
+}
+
+- (NSString *)adWhirlApplicationKey {
+    return @"983b6dbf6d2443bf99a72a65768cd5ca";
+}
+
+- (UIViewController *)viewControllerForPresentingModalView {
+    return viewController;    
+}
+
+-(void)adjustAdSize {
+	//1
+	[UIView beginAnimations:@"AdResize" context:nil];
+	[UIView setAnimationDuration:0.2];
+	//2
+	CGSize adSize = [adWhirlView actualAdSize];
+	//3
+	CGRect newFrame = adWhirlView.frame;
+	//4
+	newFrame.size.height = adSize.height;
+    
+   	//5 
+    CGSize winSize = [CCDirector sharedDirector].winSize;
+    //6
+	newFrame.size.width = winSize.width;
+	//7
+	newFrame.origin.x = (self.adWhirlView.bounds.size.width - adSize.width)/2;
+    
+    //8 
+	newFrame.origin.y = (winSize.height - adSize.height);
+	//9
+	adWhirlView.frame = newFrame;
+	//10
+	[UIView commitAnimations];
+}
+
+- (void)adWhirlDidReceiveAd:(AdWhirlView *)adWhirlVieww {
+    //1
+    [adWhirlView rotateToOrientation:UIInterfaceOrientationLandscapeRight];
+	//2    
+    [self adjustAdSize];
+    
 }
 
 - (void)dealloc
 {
+    self.adWhirlView.delegate = nil;
+    self.adWhirlView = nil;
     delete _world;
     _groundBody = NULL;
     delete _contactListener;
