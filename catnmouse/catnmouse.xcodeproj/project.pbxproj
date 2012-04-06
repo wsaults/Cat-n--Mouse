@@ -220,6 +220,10 @@
 		BEA96492152F71F000D1149D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BEA96491152F71F000D1149D /* libz.dylib */; };
 		BEA9649C152F725100D1149D /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BEA9649A152F725100D1149D /* libGoogleAdMobAds.a */; };
 		BEA9649D152F725100D1149D /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = BEA9649B152F725100D1149D /* README.txt */; };
+		BEA964A2152F851900D1149D /* cheese5-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = BEA9649E152F851900D1149D /* cheese5-hd.png */; };
+		BEA964A3152F851900D1149D /* cheese5.png in Resources */ = {isa = PBXBuildFile; fileRef = BEA9649F152F851900D1149D /* cheese5.png */; };
+		BEA964A4152F851900D1149D /* cheese10-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = BEA964A0152F851900D1149D /* cheese10-hd.png */; };
+		BEA964A5152F851900D1149D /* cheese10.png in Resources */ = {isa = PBXBuildFile; fileRef = BEA964A1152F851900D1149D /* cheese10.png */; };
 		BEBD7968152E10C3003C78F1 /* Ball-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = BEBD7967152E10C3003C78F1 /* Ball-hd.png */; };
 		BEBD796C152E1386003C78F1 /* GKWizard.mm in Sources */ = {isa = PBXBuildFile; fileRef = BEBD796A152E11BA003C78F1 /* GKWizard.mm */; };
 		BEE04470151ED73C00A9B122 /* PopUp.mm in Sources */ = {isa = PBXBuildFile; fileRef = BEE0446F151ED73C00A9B122 /* PopUp.mm */; };
@@ -630,6 +634,10 @@
 		BEA96499152F725100D1149D /* GADRequestError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADRequestError.h; sourceTree = "<group>"; };
 		BEA9649A152F725100D1149D /* libGoogleAdMobAds.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAdMobAds.a; sourceTree = "<group>"; };
 		BEA9649B152F725100D1149D /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		BEA9649E152F851900D1149D /* cheese5-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cheese5-hd.png"; sourceTree = "<group>"; };
+		BEA9649F152F851900D1149D /* cheese5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cheese5.png; sourceTree = "<group>"; };
+		BEA964A0152F851900D1149D /* cheese10-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cheese10-hd.png"; sourceTree = "<group>"; };
+		BEA964A1152F851900D1149D /* cheese10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cheese10.png; sourceTree = "<group>"; };
 		BEADA7401528ED6100865AAD /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		BEBD7967152E10C3003C78F1 /* Ball-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ball-hd.png"; sourceTree = "<group>"; };
 		BEBD7969152E11BA003C78F1 /* GKWizard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GKWizard.h; sourceTree = "<group>"; };
@@ -678,6 +686,10 @@
 		BE0D3D86151FBA31007345E5 /* art */ = {
 			isa = PBXGroup;
 			children = (
+				BEA9649E152F851900D1149D /* cheese5-hd.png */,
+				BEA9649F152F851900D1149D /* cheese5.png */,
+				BEA964A0152F851900D1149D /* cheese10-hd.png */,
+				BEA964A1152F851900D1149D /* cheese10.png */,
 				BEA96413152F6FAD00D1149D /* mouse-hd.png */,
 				BEA96414152F6FAD00D1149D /* mouse.png */,
 				BEA963FF152F6FA700D1149D /* cat1-hd.png */,
@@ -1426,6 +1438,10 @@
 				BEA96416152F6FAD00D1149D /* mouse.png in Resources */,
 				BEA9647C152F717B00D1149D /* AdWhirlWebBrowser.xib in Resources */,
 				BEA9649D152F725100D1149D /* README.txt in Resources */,
+				BEA964A2152F851900D1149D /* cheese5-hd.png in Resources */,
+				BEA964A3152F851900D1149D /* cheese5.png in Resources */,
+				BEA964A4152F851900D1149D /* cheese10-hd.png in Resources */,
+				BEA964A5152F851900D1149D /* cheese10.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

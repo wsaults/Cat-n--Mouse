@@ -81,6 +81,8 @@
 
 - (void)startGame
 {    
+    isThereCheese = NO;
+    
 //    [SimpleAudioEngine sharedEngine] playBackgroundMusic:@".caf"];
     CGSize winSize = [CCDirector sharedDirector].winSize;
     
@@ -307,7 +309,7 @@
             
             // Cat 5
             // Create sprite and add it to the layer
-            CCSprite *cat5 = [CCSprite spriteWithFile:@"cat5text.png" 
+            CCSprite *cat5 = [CCSprite spriteWithFile:@"cat5.png" 
                                                  rect:CGRectMake(0, 0, 52, 52)];
             cat5.position = ccp(100, 100);
             cat5.tag = 5;
@@ -395,7 +397,20 @@
     }
     
     // Random Cheese bonus!
-    int r = arc4random() % 10; // Random number from 0-10
+    int r = arc4random() % 1000; // Random number from 0-10
+    if (r == 10 && isThereCheese == NO) {
+        // Make a block of 10pt cheese - Small Block
+        isThereCheese = YES;
+        CCSprite *smallBlock = [CCSprite spriteWithFile:@"cheese10.png"];
+        [smallBlock setPosition:ccp(s.width/2,s.height/2)];
+        [self addChild:smallBlock];
+    } else if ((r == 1 || r == 5) && isThereCheese == NO) {
+        // Make a block of 5pt cheese - Big Block
+        isThereCheese = YES;
+        CCSprite *bigBlock = [CCSprite spriteWithFile:@"cheese5.png"];
+        [bigBlock setPosition:ccp(s.width/2,s.height/2)];
+        [self addChild:bigBlock];
+    }
     
     //timeElapsed += dt;
     

@@ -46,6 +46,7 @@ enum GameStatePP {
     b2Fixture *_bottomFixture;
     
     int numberOfCats;
+    bool isThereCheese;
     
     // Cat 1
     b2FixtureDef cat1ShapeDef;
