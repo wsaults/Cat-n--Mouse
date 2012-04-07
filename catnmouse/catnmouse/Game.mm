@@ -83,7 +83,7 @@
 {    
     isThereCheese = NO;
     
-//    [SimpleAudioEngine sharedEngine] playBackgroundMusic:@".caf"];
+    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"DST-OriginB.mp3"];
     CGSize winSize = [CCDirector sharedDirector].winSize;
     
     // Create a world
@@ -589,6 +589,7 @@
 
 - (void)gameOver
 {    
+    [[SimpleAudioEngine sharedEngine] playEffect:@"sadwhisle.wav"];
     [delegate finishedWithScore:score];
     CCLOG(@"Game over score is: %f", score);
     [self unscheduleAllSelectors];

@@ -171,10 +171,10 @@
     }
     timesPlayed++;
     [[NSUserDefaults standardUserDefaults] setInteger:timesPlayed forKey:kTimesPlayed];
-    if (timesPlayed % 10 == 0 && ![[NSUserDefaults standardUserDefaults] boolForKey:kDidRate]) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Like Cat N' Mouse?" message:@"If you like Cat N' Mouse, please rate it to show your support." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Rate", nil];
-        [alert show];
-    }
+//    if (timesPlayed % 10 == 0 && ![[NSUserDefaults standardUserDefaults] boolForKey:kDidRate]) {
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Like Cat N' Mouse?" message:@"If you like Cat N' Mouse, please rate it to show your support." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Rate", nil];
+//        [alert show];
+//    }
 }
 
 -(double)getHighScore
@@ -222,7 +222,7 @@
         return;
     }
 #warning Change the URLWithString in the following line!
-    [[UIApplication sharedApplication] openURL: [NSURL URLWithString:@"http://itunes.apple.com/us/app/mole-it!-free/id464362476?ls=1&mt=8"]];
+    [[UIApplication sharedApplication] openURL: [NSURL URLWithString:@""]];
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kDidRate];
     
 }
