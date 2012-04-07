@@ -9,6 +9,11 @@
 #endif
 
 #ifdef __OBJC__
-#import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import "cocos2d.h"
+#endif
+
+#ifdef __cplusplus
+#include "Box2D.h"
 #endif

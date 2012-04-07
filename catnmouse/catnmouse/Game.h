@@ -7,7 +7,6 @@
 //
 
 #import "cocos2d.h"
-#import "Box2D.h"
 #import "MyContactListener.h"
 
 #import "AdWhirlView.h"
@@ -47,6 +46,7 @@ enum GameStatePP {
     
     int numberOfCats;
     bool isThereCheese;
+    int r;
     
     // Cat 1
     b2FixtureDef cat1ShapeDef;
@@ -71,6 +71,14 @@ enum GameStatePP {
     // Mouse
     b2Body *_mouseBody;
     b2Fixture *_mouseFixture;
+    
+    // Cheese 10
+    b2FixtureDef cheese10ShapeDef;
+    b2Fixture *_cheese10Fixture;
+    
+    // Cheese 5
+    b2FixtureDef cheese5ShapeDef;
+    b2Fixture *_cheese5Fixture;
     
     b2MouseJoint *_mouseJoint;
     

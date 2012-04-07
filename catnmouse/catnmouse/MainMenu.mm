@@ -38,8 +38,8 @@
         [CCMenuItemFont setFontName:@"SF_Cartoonist_Hand_Bold.ttf"];
         fSize = [CCMenuItemFont fontSize];
         [CCMenuItemFont setFontSize:48];
-        
-        CCMenuItemSprite *playButton = [CCMenuItemSprite itemFromNormalSprite:[GameButton buttonWithText:@"play!" isBig:YES]
+        // Play Button
+        CCMenuItemSprite *playButton = [CCMenuItemSprite itemFromNormalSprite:[GameButton buttonWithText:@"Play!" isBig:YES]
                                                                 selectedSprite:NULL target:self selector:@selector(playGame)];
         [CCMenuItemFont setFontSize:fSize/1.5];
         CCMenuItemSprite *leaderboardsButton = [CCMenuItemSprite itemFromNormalSprite:[GameButton buttonWithText:@"Game Center"] selectedSprite:NULL target:self selector:@selector(showLeaderboard)];

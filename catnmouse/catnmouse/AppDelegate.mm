@@ -134,6 +134,7 @@
 }
 
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
+    CCLOG(@"applicationDidReceiveMemoryWarning");
 	[[CCDirector sharedDirector] purgeCachedData];
 }
 
@@ -161,11 +162,12 @@
 	[[CCDirector sharedDirector] setNextDeltaTimeZero:YES];
 }
 
--(void)finishedWithScore: (double)score
+-(void)finishedWithScore:(double)score
 {
     if (score > [self getHighScore]) {
         [[NSUserDefaults standardUserDefaults] setDouble:score forKey:kHighScoreKey];
         [wiz reportScore:score forLeaderboard:kHighScoreKey];
+        CCLOG(@"finishedWithScore: %f",score);
     }
     timesPlayed++;
     [[NSUserDefaults standardUserDefaults] setInteger:timesPlayed forKey:kTimesPlayed];

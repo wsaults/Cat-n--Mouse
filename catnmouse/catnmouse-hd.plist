@@ -11,7 +11,7 @@
 	</dict>
 	<key>frames</key>
 	<dict>
-		<key>button_big-hd.png</key>
+		<key>button_big.png</key>
 		<dict>
 			<key>x</key>
 			<integer>642</integer>
@@ -30,7 +30,7 @@
 			<key>originalHeight</key>
 			<integer>148</integer>
 		</dict>
-		<key>button_small-hd.png</key>
+		<key>button_small.png</key>
 		<dict>
 			<key>x</key>
 			<integer>642</integer>
@@ -49,7 +49,7 @@
 			<key>originalHeight</key>
 			<integer>70</integer>
 		</dict>
-		<key>menu-hd.png</key>
+		<key>menu.png</key>
 		<dict>
 			<key>x</key>
 			<integer>1</integer>
@@ -68,7 +68,7 @@
 			<key>originalHeight</key>
 			<integer>960</integer>
 		</dict>
-		<key>pause_button-hd.png</key>
+		<key>pause_button.png</key>
 		<dict>
 			<key>x</key>
 			<integer>642</integer>

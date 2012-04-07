@@ -10,7 +10,6 @@
     double highScore;
 }
 
-
 -(void)reportScore: (double)score forLeaderboard:(NSString *)leaderboard;
 -(bool)isGameCenterAvailable;
 -(void)authenticateLocalPlayer;

@@ -28,6 +28,8 @@
     GKScore *scoreReporter = [[[GKScore alloc] initWithCategory:leaderboard] autorelease];
     if (scoreReporter.value < score) {
         scoreReporter.value = score;
+        
+        CCLOG(@"Reporting score: %f", score);
     }
     else
     {
@@ -41,6 +43,11 @@
             // handle the reporting error
         }
     }];
+}
+
+- (void) reportScore: (int64_t) score forCategory: (NSString*) category
+{
+    
 }
 
 - (void) authenticateLocalPlayer
@@ -63,11 +70,6 @@
 			//NSLog(@"error logging in");
 		}
 	}];
-}
-
-- (void) reportScore: (double) score forCategory: (NSString*) category
-{
-    
 }
 
 -(bool) isGameCenterAvailable

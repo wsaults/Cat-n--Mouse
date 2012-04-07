@@ -189,6 +189,7 @@
     // Create mouse and add it to the layer
     CCSprite *mouse = [CCSprite spriteWithFile:@"mouse.png" rect:CGRectMake(0, 0, 52, 52)];
     mouse.position = ccp(winSize.width/2, winSize.height/3);
+    mouse.tag = 20;
     [self addChild:mouse z:105];
     
     // Create paddle body
@@ -231,7 +232,7 @@
         score = gameTime;
         NSString *string = [[NSString alloc] initWithFormat:@"%2.2f",gameTime];
         [highScore setString:string];
-    
+        
         if (gameTime > 3.0f && numberOfCats == 2) {
             // Create circle shape
             b2CircleShape circle;
@@ -243,14 +244,14 @@
             // Create sprite and add it to the layer
             CCSprite *cat3 = [CCSprite spriteWithFile:@"cat3.png" 
                                                  rect:CGRectMake(0, 0, 52, 52)];
-            cat3.position = ccp(50, 50);
+            cat3.position = ccp(1, 1);
             cat3.tag = 3;
             [self addChild:cat3];
             
             // Create cat3 body 
             b2BodyDef cat3BodyDef;
             cat3BodyDef.type = b2_dynamicBody;
-            cat3BodyDef.position.Set(50/PTM_RATIO, 50/PTM_RATIO);
+            cat3BodyDef.position.Set(1/PTM_RATIO, 1/PTM_RATIO);
             cat3BodyDef.userData = cat3;
             b2Body * cat3Body = _world->CreateBody(&cat3BodyDef);
             
@@ -277,14 +278,14 @@
             // Create sprite and add it to the layer
             CCSprite *cat4 = [CCSprite spriteWithFile:@"cat4.png" 
                                                  rect:CGRectMake(0, 0, 52, 52)];
-            cat4.position = ccp(50, 50);
+            cat4.position = ccp(1, 1);
             cat4.tag = 4;
             [self addChild:cat4];
             
             // Create cat4 body 
             b2BodyDef cat4BodyDef;
             cat4BodyDef.type = b2_dynamicBody;
-            cat4BodyDef.position.Set(50/PTM_RATIO, 50/PTM_RATIO);
+            cat4BodyDef.position.Set(1/PTM_RATIO, 1/PTM_RATIO);
             cat4BodyDef.userData = cat4;
             b2Body * cat4Body = _world->CreateBody(&cat4BodyDef);
             
@@ -311,14 +312,14 @@
             // Create sprite and add it to the layer
             CCSprite *cat5 = [CCSprite spriteWithFile:@"cat5.png" 
                                                  rect:CGRectMake(0, 0, 52, 52)];
-            cat5.position = ccp(100, 100);
+            cat5.position = ccp(1, 1);
             cat5.tag = 5;
             [self addChild:cat5];
             
             // Create cat5 body 
             b2BodyDef cat5BodyDef;
             cat5BodyDef.type = b2_dynamicBody;
-            cat5BodyDef.position.Set(100/PTM_RATIO, 100/PTM_RATIO);
+            cat5BodyDef.position.Set(1/PTM_RATIO, 1/PTM_RATIO);
             cat5BodyDef.userData = cat5;
             b2Body * cat5Body = _world->CreateBody(&cat5BodyDef);
             
@@ -334,7 +335,6 @@
             numberOfCats++;
         }
     }
-    
     
     _world->Step(dt, 10, 10);    
     for(b2Body *b = _world->GetBodyList(); b; b=b->GetNext()) {    
@@ -360,6 +360,77 @@
         }
     }
     
+#pragma mark - Random Cheese Bonus
+    // Random Cheese bonus!
+//    r = arc4random() % 500; // Random number from 0-500
+    r = 0;
+    if (r == 10 && isThereCheese == NO) {
+        // Make a block of 10pt cheese - Small Block
+        isThereCheese = YES;
+        
+        
+        // Create sprite and add it to the layer
+        CCSprite *smallCheese = [CCSprite spriteWithFile:@"cheese10.png" 
+                                                    rect:CGRectMake(0, 0, 32, 32)];
+        [smallCheese setPosition:ccp(s.width/2,s.height/2)];
+        smallCheese.tag = 100;
+        [self addChild:smallCheese z:999];
+        
+        // Create block body
+        b2BodyDef blockBodyDef;
+        blockBodyDef.type = b2_dynamicBody;
+        blockBodyDef.position.Set(s.width/2,s.height/2);
+        blockBodyDef.userData = smallCheese;
+        b2Body *blockBody = _world->CreateBody(&blockBodyDef);
+        
+        // Create block shape
+        b2PolygonShape blockShape;
+        blockShape.SetAsBox(smallCheese.contentSize.width/PTM_RATIO/2,
+                            smallCheese.contentSize.height/PTM_RATIO/2);
+        
+        // Create shape definition and add to body
+        b2FixtureDef blockShapeDef;
+        blockShapeDef.shape = &blockShape;
+        blockShapeDef.density = 10.0;
+        blockShapeDef.friction = 0.0;
+        blockShapeDef.restitution = 0.1f;
+        blockBody->CreateFixture(&blockShapeDef);
+        
+        
+    } else if ((r == 1 || r == 5) && isThereCheese == NO) {
+        // Make a block of 5pt cheese - Big Block
+        isThereCheese = YES;
+        
+        // Create sprite and add it to the layer
+        CCSprite *bigCheese = [CCSprite spriteWithFile:@"cheese5.png" 
+                                                  rect:CGRectMake(0, 0, 64, 64)];
+        [bigCheese setPosition:ccp(s.width/2,s.height/2)];
+        bigCheese.tag = 100;
+        [self addChild:bigCheese z:999];
+        
+        // Create block body
+        b2BodyDef blockBodyDef;
+        blockBodyDef.type = b2_dynamicBody;
+        blockBodyDef.position.Set(s.width/2,s.height/2);
+        blockBodyDef.userData = bigCheese;
+        b2Body *blockBody = _world->CreateBody(&blockBodyDef);
+        
+        // Create block shape
+        b2PolygonShape blockShape;
+        blockShape.SetAsBox(bigCheese.contentSize.width/PTM_RATIO/2,
+                            bigCheese.contentSize.height/PTM_RATIO/2);
+        
+        // Create shape definition and add to body
+        b2FixtureDef blockShapeDef;
+        blockShapeDef.shape = &blockShape;
+        blockShapeDef.density = 10.0;
+        blockShapeDef.friction = 0.0;
+        blockShapeDef.restitution = 0.1f;
+        blockBody->CreateFixture(&blockShapeDef);
+    }
+    // end cheese bonus
+    
+    std::vector<b2Body *>toDestroy;
     std::vector<MyContact>::iterator pos;
     for(pos = _contactListener->_contacts.begin(); 
         pos != _contactListener->_contacts.end(); ++pos) {
@@ -394,22 +465,50 @@
             CCLOG(@"Cat5 got the mouse!");
             [self gameOver];
         }
+        
+//        if ((contact.fixtureA == _mouseFixture && contact.fixtureB == _cheese10Fixture) ||
+//            (contact.fixtureA == _cheese10Fixture && contact.fixtureB == _mouseFixture)) {
+//            CCLOG(@"Got +10 Cheese Points!");
+//            
+//        }
+//        
+//        if ((contact.fixtureA == _mouseFixture && contact.fixtureB == _cheese5Fixture) ||
+//            (contact.fixtureA == _cheese5Fixture && contact.fixtureB == _mouseFixture)) {
+//            CCLOG(@"Got +5 Cheese Points!");
+//        }
+        
+        b2Body *bodyA = contact.fixtureA->GetBody();
+        b2Body *bodyB = contact.fixtureB->GetBody();
+        if (bodyA->GetUserData() != NULL && bodyB->GetUserData() != NULL) {
+            CCSprite *spriteA = (CCSprite *) bodyA->GetUserData();
+            CCSprite *spriteB = (CCSprite *) bodyB->GetUserData();
+            
+            // Sprite A = ball, Sprite B = Block
+            if (spriteA.tag == 20 && spriteB.tag == 100) {
+                if (std::find(toDestroy.begin(), toDestroy.end(), bodyB) 
+                    == toDestroy.end()) {
+                    toDestroy.push_back(bodyB);
+                    CCLOG(@"Got Cheese Points!");
+                }
+            }
+            // Sprite B = block, Sprite A = ball
+            else if (spriteB.tag == 100 && spriteA.tag == 20) {
+                if (std::find(toDestroy.begin(), toDestroy.end(), bodyA) 
+                    == toDestroy.end()) {
+                    toDestroy.push_back(bodyA);
+                    CCLOG(@"Got Cheese Points!");
+                }
+            }        
+        }
     }
-    
-    // Random Cheese bonus!
-    int r = arc4random() % 1000; // Random number from 0-10
-    if (r == 10 && isThereCheese == NO) {
-        // Make a block of 10pt cheese - Small Block
-        isThereCheese = YES;
-        CCSprite *smallBlock = [CCSprite spriteWithFile:@"cheese10.png"];
-        [smallBlock setPosition:ccp(s.width/2,s.height/2)];
-        [self addChild:smallBlock];
-    } else if ((r == 1 || r == 5) && isThereCheese == NO) {
-        // Make a block of 5pt cheese - Big Block
-        isThereCheese = YES;
-        CCSprite *bigBlock = [CCSprite spriteWithFile:@"cheese5.png"];
-        [bigBlock setPosition:ccp(s.width/2,s.height/2)];
-        [self addChild:bigBlock];
+    std::vector<b2Body *>::iterator pos2;
+    for(pos2 = toDestroy.begin(); pos2 != toDestroy.end(); ++pos2) {
+        b2Body *body = *pos2;     
+        if (body->GetUserData() != NULL) {
+            CCSprite *sprite = (CCSprite *) body->GetUserData();
+            [self removeChild:sprite cleanup:YES];
+        }
+        _world->DestroyBody(body);
     }
     
     //timeElapsed += dt;
@@ -451,22 +550,6 @@
         _mouseJoint = (b2MouseJoint *)_world->CreateJoint(&md);
         _mouseBody->SetAwake(true);
     }
-    
-    for (UITouch *touch in [event allTouches]) {
-        // Touches a bonus point
-#warning See Chapter 3. Moleit Handling Touches in the game
-//        for (Bonus *bonus in bonus) {
-//            CGPoint location = [touch locationInView:touch.view];
-//            location = [[CCDirector sharedDirector] convertToGL:location];
-//            if (CGRectContainsPoint([bonus boundingBox, location)) {
-//                if(![bonus getIsUp])
-//                {
-//                    continue;
-//                }
-//                [bonus wasTapped];
-//            }
-//        }
-    }
 }
 
 -(void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -505,12 +588,7 @@
 }
 
 - (void)gameOver
-{
-    //    for (Cat *c in cats) {
-    //        [c stopAllActions];
-    //        [c unscheduleAllSelectors];
-    //    }
-    
+{    
     [delegate finishedWithScore:score];
     CCLOG(@"Game over score is: %f", score);
     [self unscheduleAllSelectors];

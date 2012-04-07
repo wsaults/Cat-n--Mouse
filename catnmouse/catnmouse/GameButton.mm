@@ -29,7 +29,7 @@
         CCLabelTTF *labelShadow = [CCLabelTTF labelWithString:buttonText fontName:@"SF_Cartoonist_Hand_Bold" fontSize:fSize + big * fSize];
         labelShadow.position = ccp(self.contentSize.width/2 - (2 + big * 2), self.contentSize.height/2);
         labelShadow.color = ccBLACK;
-        labelShadow.opacity = 150;
+        labelShadow.opacity = 125;
         [self addChild:labelShadow];
     }
     return self;
