@@ -33,6 +33,7 @@ enum GameStatePP {
     CCLabelBMFont *scoreLabel;
     AppDelegate *delegate;
     CCMenuItemSprite *pauseButton;
+    CCLabelTTF *pause;
     
     double gameTime;
     CGSize s;

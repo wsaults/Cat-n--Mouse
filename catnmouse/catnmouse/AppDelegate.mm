@@ -6,7 +6,6 @@
 //  Copyright __MyCompanyName__ 2012. All rights reserved.
 //
 
-#import "cocos2d.h"
 #import "AppDelegate.h"
 #import "GameConfig.h"
 #import "Game.h"
@@ -113,7 +112,7 @@
 	
 	// Removes the startup flicker
 	[self removeStartupFlicker];
-	
+    
 	// Run the intro Scene
 	[[CCDirector sharedDirector] runWithScene: [MainMenu node]];
 }
@@ -138,11 +137,11 @@
 	[[CCDirector sharedDirector] purgeCachedData];
 }
 
--(void) applicationDidEnterBackground:(UIApplication*)application {
+- (void) applicationDidEnterBackground:(UIApplication*)application {
 	[[CCDirector sharedDirector] stopAnimation];
 }
 
--(void) applicationWillEnterForeground:(UIApplication*)application {
+- (void) applicationWillEnterForeground:(UIApplication*)application {
 	[[CCDirector sharedDirector] startAnimation];
 }
 
@@ -162,7 +161,7 @@
 	[[CCDirector sharedDirector] setNextDeltaTimeZero:YES];
 }
 
--(void)finishedWithScore:(double)score
+- (void)finishedWithScore:(double)score
 {
     if (score > [self getHighScore]) {
         [[NSUserDefaults standardUserDefaults] setDouble:score forKey:kHighScoreKey];
@@ -171,72 +170,161 @@
     }
     timesPlayed++;
     [[NSUserDefaults standardUserDefaults] setInteger:timesPlayed forKey:kTimesPlayed];
-//    if (timesPlayed % 10 == 0 && ![[NSUserDefaults standardUserDefaults] boolForKey:kDidRate]) {
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Like Cat N' Mouse?" message:@"If you like Cat N' Mouse, please rate it to show your support." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Rate", nil];
-//        [alert show];
-//    }
+    if (timesPlayed % 10 == 0 && ![[NSUserDefaults standardUserDefaults] boolForKey:kDidRate]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Like Cat N' Mouse?" message:@"If you like Cat N' Mouse, please rate it to show your support." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Rate", nil];
+        [alert show];
+    }
 }
 
--(double)getHighScore
+- (double)getHighScore
 {
     return [[NSUserDefaults standardUserDefaults] doubleForKey:kHighScoreKey];
 }
 #pragma mark -------
 
--(void)pause
+- (void)pause
 {
     if (![self isGameScene]) {
         [[CCDirector sharedDirector] pause];
     }
 }
--(void)resume
+- (void)resume
 {
     if (![self isGameScene]) {
         [[CCDirector sharedDirector] resume];
     }
 }
 
--(BOOL)isGameScene
+- (BOOL)isGameScene
 {
     return [[[CCDirector sharedDirector] runningScene] isKindOfClass:[Game class]];
 }
 
--(NSString *)getCurrentSkin
+- (NSString *)getCurrentSkin
 {
     return currentSkin;
 }
--(void)setCurrentSkin:(NSString *)skin
+- (void)setCurrentSkin:(NSString *)skin
 {
     currentSkin = skin;
 }
 
--(UIViewController *)getViewController
+- (UIViewController *)getViewController
 {
     return viewController;
 }
 
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if(buttonIndex == 0)
     {
         return;
     }
-#warning Change the URLWithString in the following line!
-    [[UIApplication sharedApplication] openURL: [NSURL URLWithString:@""]];
+    [[UIApplication sharedApplication] openURL: [NSURL URLWithString:@"http://itunes.apple.com/us/app/cat-n-mouse/id516661918?mt=8"]];
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kDidRate];
     
 }
 
--(void)showLeaderboard
+- (void)showLeaderboard
 {
     GKLeaderboardViewController *lb = [[[GKLeaderboardViewController alloc] init] autorelease];
     lb.leaderboardDelegate = self;
     [viewController presentModalViewController:lb animated:YES];
 }
 
--(void)leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController
+- (void)showAchievements
 {
-    [viewController dismissModalViewControllerAnimated:YES];
+    GKAchievementViewController *ac = [[[GKAchievementViewController alloc] init] autorelease];
+    ac.achievementDelegate = self;
+    [viewController presentModalViewController:ac animated:YES];
+}
+
+- (void)leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)vc
+{
+    [vc dismissModalViewControllerAnimated:YES];
+}
+
+- (void)achievementViewControllerDidFinish:(GKAchievementViewController *)vc;
+{
+    [vc dismissModalViewControllerAnimated: YES];
+}
+
+- (void)checkAchievements:(double)t
+{
+    NSString* identifier = NULL;
+    double percentComplete = 0;
+    if ((int)t >= 5) {
+        identifier= k5Seconds;
+        percentComplete= 100.0;
+        [self reportAchievementIdentifier:identifier percentComplete:percentComplete];
+    }
+    if ((int)t >= 10) {
+        identifier= k10Seconds;
+        percentComplete= 100.0;
+        [self reportAchievementIdentifier:identifier percentComplete:percentComplete];
+    }
+    if ((int)t >= 15) {
+        identifier= k15Seconds;
+        percentComplete= 100.0;
+        [self reportAchievementIdentifier:identifier percentComplete:percentComplete];
+    }
+    if ((int)t >= 20) {
+        identifier= k20Seconds;
+        percentComplete= 100.0;
+        [self reportAchievementIdentifier:identifier percentComplete:percentComplete];
+    }
+    if ((int)t >= 25) {
+        identifier= k25Seconds;
+        percentComplete= 100.0;
+        [self reportAchievementIdentifier:identifier percentComplete:percentComplete];
+    }
+    if ((int)t >= 30) {
+        identifier= k30Seconds;
+        percentComplete= 100.0;
+        [self reportAchievementIdentifier:identifier percentComplete:percentComplete];
+    }
+    if ((int)t >= 35) {
+        identifier= k35Seconds;
+        percentComplete= 100.0;
+        [self reportAchievementIdentifier:identifier percentComplete:percentComplete];
+    }
+    if ((int)t >= 40) {
+        identifier= k40Seconds;
+        percentComplete= 100.0;
+        [self reportAchievementIdentifier:identifier percentComplete:percentComplete];
+    }
+    if ((int)t >= 45) {
+        identifier= k45Seconds;
+        percentComplete= 100.0;
+        [self reportAchievementIdentifier:identifier percentComplete:percentComplete];
+    }
+    if ((int)t >= 50) {
+        identifier= k50Seconds;
+        percentComplete= 100.0;
+        [self reportAchievementIdentifier:identifier percentComplete:percentComplete];
+    }
+    if ((int)t >= 55) {
+        identifier= k55Seconds;
+        percentComplete= 100.0;
+        [self reportAchievementIdentifier:identifier percentComplete:percentComplete];
+    }
+    if ((int)t >= 60) {
+        identifier= k60Seconds;
+        percentComplete= 100.0;
+        [self reportAchievementIdentifier:identifier percentComplete:percentComplete];
+    }
+}
+
+- (void) reportAchievementIdentifier: (NSString*) identifier percentComplete: (float) percent
+{
+    GKAchievement *achievement = [[[GKAchievement alloc] initWithIdentifier: identifier] autorelease];
+    if (achievement != nil && achievement.percentComplete < percent) {
+        if (!achievement.isCompleted){
+//            achievement.showsCompletionBanner = YES;
+            achievement.percentComplete = percent;
+            [achievement reportAchievementWithCompletionHandler: ^(NSError* error){ }];
+        }
+    }
 }
 
 - (void)dealloc {

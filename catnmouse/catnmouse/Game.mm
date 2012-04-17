@@ -68,12 +68,12 @@
     // Pause Button
     pauseButton = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithSpriteFrameName:@"pause_button.png"] selectedSprite:NULL target:self selector:@selector(pauseGame)];
     CCMenu *menu = [CCMenu menuWithItems:pauseButton, nil];
-    pauseButton.position = ccp(s.width/2 - pauseButton.contentSize.width/2, (-s.height/2) + pauseButton.contentSize.height*1.5);
+    pauseButton.position = ccp(s.width/2 - pauseButton.contentSize.width/2, (-s.height/2) + pauseButton.contentSize.height*1.8);
     [self addChild:menu z:100];
     
     int fSize = 28;
-    CCLabelTTF *pause = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"ll"] fontName:@"SF_Cartoonist_Hand_Bold.ttf" fontSize:fSize];
-    pause.position = ccp(s.width/1.085, s.height/6.6);
+    pause = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"ll"] fontName:@"SF_Cartoonist_Hand_Bold.ttf" fontSize:fSize];
+    pause.position = ccp(s.width/1.069, s.height/6.6);
     [self addChild:pause z:101];
     
     [self startGame];
@@ -230,6 +230,7 @@
     if (!isPaused) {
         gameTime += dt;
         score = gameTime;
+        
         NSString *string = [[NSString alloc] initWithFormat:@"%2.2f",gameTime];
         [highScore setString:string];
         
@@ -591,6 +592,7 @@
 {    
     [[SimpleAudioEngine sharedEngine] playEffect:@"sadwhisle.wav"];
     [delegate finishedWithScore:score];
+    [delegate checkAchievements:score];
     CCLOG(@"Game over score is: %f", score);
     [self unscheduleAllSelectors];
     [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
@@ -619,6 +621,7 @@
     PopUp *pop = [PopUp popUpWithTitle:@"-pause-" description:@"" sprite:menu];
     [self addChild:pop z:1000];
     pauseButton.visible = NO;
+    pause.visible = NO;
     
 //    for (Cat *c in [self cats]) {
 //        [c stopEarly];
@@ -632,6 +635,7 @@
 - (void)resumeGame
 {
     pauseButton.visible = YES;
+    pause.visible = YES;
     [self schedule:@selector(tick:)];
     [[SimpleAudioEngine sharedEngine] resumeBackgroundMusic];
     isPaused = NO;

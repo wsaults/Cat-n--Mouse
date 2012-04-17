@@ -2,90 +2,124 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>texture</key>
-	<dict>
-		<key>width</key>
-		<integer>512</integer>
-		<key>height</key>
-		<integer>512</integer>
-	</dict>
 	<key>frames</key>
 	<dict>
+		
 		<key>button_big.png</key>
 		<dict>
-			<key>x</key>
-			<integer>322</integer>
-			<key>y</key>
-			<integer>1</integer>
-			<key>width</key>
-			<integer>167</integer>
-			<key>height</key>
-			<integer>74</integer>
-			<key>offsetX</key>
-			<real>0</real>
-			<key>offsetY</key>
-			<real>0</real>
-			<key>originalWidth</key>
-			<integer>167</integer>
-			<key>originalHeight</key>
-			<integer>74</integer>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{0, 0}, {167, 74}}</string>
+			<key>spriteOffset</key>
+			<string>{0, -0}</string>
+			<key>spriteSize</key>
+			<string>{167, 74}</string>
+			<key>spriteSourceSize</key>
+			<string>{167, 74}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{322, 0}, {167, 74}}</string>
+			<key>textureRotated</key>
+			<false/>
 		</dict>
+		
 		<key>button_small.png</key>
 		<dict>
-			<key>x</key>
-			<integer>322</integer>
-			<key>y</key>
-			<integer>76</integer>
-			<key>width</key>
-			<integer>82</integer>
-			<key>height</key>
-			<integer>35</integer>
-			<key>offsetX</key>
-			<real>0</real>
-			<key>offsetY</key>
-			<real>0</real>
-			<key>originalWidth</key>
-			<integer>82</integer>
-			<key>originalHeight</key>
-			<integer>35</integer>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{0, 0}, {82, 35}}</string>
+			<key>spriteOffset</key>
+			<string>{0, -0}</string>
+			<key>spriteSize</key>
+			<string>{82, 35}</string>
+			<key>spriteSourceSize</key>
+			<string>{82, 35}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{322, 76}, {82, 35}}</string>
+			<key>textureRotated</key>
+			<false/>
 		</dict>
+		
 		<key>menu.png</key>
 		<dict>
-			<key>x</key>
-			<integer>1</integer>
-			<key>y</key>
-			<integer>1</integer>
-			<key>width</key>
-			<integer>320</integer>
-			<key>height</key>
-			<integer>480</integer>
-			<key>offsetX</key>
-			<real>0</real>
-			<key>offsetY</key>
-			<real>0</real>
-			<key>originalWidth</key>
-			<integer>320</integer>
-			<key>originalHeight</key>
-			<integer>480</integer>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{0, 0}, {320, 480}}</string>
+			<key>spriteOffset</key>
+			<string>{0, -0}</string>
+			<key>spriteSize</key>
+			<string>{320, 480}</string>
+			<key>spriteSourceSize</key>
+			<string>{320, 480}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{0, 0}, {320, 480}}</string>
+			<key>textureRotated</key>
+			<false/>
 		</dict>
+		
 		<key>pause_button.png</key>
 		<dict>
-			<key>x</key>
-			<integer>322</integer>
-			<key>y</key>
-			<integer>112</integer>
-			<key>width</key>
-			<integer>50</integer>
-			<key>height</key>
-			<integer>50</integer>
-			<key>offsetX</key>
-			<real>0</real>
-			<key>offsetY</key>
-			<real>0</real>
-			<key>originalWidth</key>
-			<integer>50</integer>
-			<key>originalHeight</key>
-			<integer>50</integer>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{0, 0}, {40, 40}}</string>
+			<key>spriteOffset</key>
+			<string>{0, -0}</string>
+			<key>spriteSize</key>
+			<string>{40, 40}</string>
+			<key>spriteSourceSize</key>
+			<string>{40, 40}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{322, 113}, {40, 40}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+	</dict>
+	<key>metadata</key>
+	<dict>
+		<key>version</key>
+		<string>1.5.2</string>
+		<key>format</key>
+		<integer>3</integer>
+		<key>size</key>
+		<string>{512, 512}</string>
+		<key>name</key>
+		<string>Untitled</string>
+		<key>premultipliedAlpha</key>
+		<false/>
+		<key>target</key>
+		<dict>
+			<key>name</key>
+			<string>default</string>
+			<key>textureFileName</key>
+			<string>catnmouse</string>
+			<key>textureFileExtension</key>
+			<string>.png</string>
+			<key>coordinatesFileName</key>
+			<string>catnmouse</string>
+			<key>coordinatesFileExtension</key>
+			<string>.plist</string>
+			<key>premultipliedAlpha</key>
+			<false/>
 		</dict>
 	</dict>
 </dict>

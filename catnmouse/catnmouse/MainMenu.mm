@@ -42,10 +42,13 @@
         CCMenuItemSprite *playButton = [CCMenuItemSprite itemFromNormalSprite:[GameButton buttonWithText:@"Play!" isBig:YES]
                                                                 selectedSprite:NULL target:self selector:@selector(playGame)];
         [CCMenuItemFont setFontSize:fSize/1.5];
-        CCMenuItemSprite *leaderboardsButton = [CCMenuItemSprite itemFromNormalSprite:[GameButton buttonWithText:@"Game Center"] selectedSprite:NULL target:self selector:@selector(showLeaderboard)];
+        CCMenuItemSprite *leaderboardsButton = [CCMenuItemSprite itemFromNormalSprite:[GameButton buttonWithText:@"High Scores"] selectedSprite:NULL target:self selector:@selector(showLeaderboard)];
+        
+        CCMenuItemSprite *achievementsButton = [CCMenuItemSprite itemFromNormalSprite:[GameButton buttonWithText:@"Achievements"] selectedSprite:NULL target:self selector:@selector(showAchievements)];
+    
         
         [CCMenuItemFont setFontSize:fSize];
-        CCMenu *menu = [CCMenu menuWithItems:leaderboardsButton, nil];
+        CCMenu *menu = [CCMenu menuWithItems:leaderboardsButton, achievementsButton, nil];
         
         [menu alignItemsHorizontallyWithPadding:20];
         menu.position = ccp(s.width/2, 20);
@@ -62,6 +65,8 @@
         bg.anchorPoint = ccp(0,0);
         [self addChild:bg z:-1];
         [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA4444];
+        
+        [delegate checkAchievements:[delegate getHighScore]];
     }
     return self;
 }
@@ -74,6 +79,11 @@
 - (void)showLeaderboard
 {
     [delegate showLeaderboard];
+}
+
+- (void)showAchievements
+{
+    [delegate showAchievements];
 }
 
 - (void)dealloc

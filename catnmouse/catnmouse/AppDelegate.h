@@ -11,7 +11,7 @@
 
 @class RootViewController;
 
-@interface AppDelegate : NSObject <UIApplicationDelegate, UIApplicationDelegate, GKLeaderboardViewControllerDelegate> {
+@interface AppDelegate : NSObject <UIApplicationDelegate, UIApplicationDelegate, GKLeaderboardViewControllerDelegate, GKAchievementViewControllerDelegate> {
 	UIWindow			*window;
 	RootViewController	*viewController;
     BOOL hasPlayedBefore;
@@ -31,5 +31,7 @@
 - (NSString *)getCurrentSkin;
 - (UIViewController *)getViewController;
 - (void)showLeaderboard;
+- (void)showAchievements;
+- (void)checkAchievements:(double)t;
 
 @end
