@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		BE0D3DA3151FF4C9007345E5 /* CCMenuPopup.mm in Sources */ = {isa = PBXBuildFile; fileRef = BEE04479151EDE4D00A9B122 /* CCMenuPopup.mm */; };
+		BE112F48153F0DF10027D248 /* libGreystripeSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE112F47153F0DF10027D248 /* libGreystripeSDK.a */; };
+		BE112F51153F16700027D248 /* AdWhirlAdapterGreystripe.m in Sources */ = {isa = PBXBuildFile; fileRef = BE112F4E153F11210027D248 /* AdWhirlAdapterGreystripe.m */; };
+		BE112F55153F1AFD0027D248 /* AdWhirlAdapterMdotM.m in Sources */ = {isa = PBXBuildFile; fileRef = BE112F54153F1ABC0027D248 /* AdWhirlAdapterMdotM.m */; };
+		BE112F58153F1E460027D248 /* AdWhirlAdapterMillennial.m in Sources */ = {isa = PBXBuildFile; fileRef = BE112F57153F1E3F0027D248 /* AdWhirlAdapterMillennial.m */; };
+		BE112F60153F1F7A0027D248 /* libMMSDK_4.5.5.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE112F5E153F1F7A0027D248 /* libMMSDK_4.5.5.a */; };
+		BE112F62153F20350027D248 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE112F61153F20350027D248 /* MobileCoreServices.framework */; };
 		BE30AC1E153CF01E0043446A /* catnmouse-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE30AC1C153CF01E0043446A /* catnmouse-hd.plist */; };
 		BE30AC1F153CF01E0043446A /* catnmouse-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = BE30AC1D153CF01E0043446A /* catnmouse-hd.png */; };
 		BE30AC22153CF0250043446A /* catnmouse.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE30AC20153CF0250043446A /* catnmouse.plist */; };
@@ -228,6 +234,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BE112F44153F0DF10027D248 /* GreystripeDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GreystripeDelegate.h; sourceTree = "<group>"; };
+		BE112F45153F0DF10027D248 /* GSAdEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSAdEngine.h; sourceTree = "<group>"; };
+		BE112F46153F0DF10027D248 /* GSAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSAdView.h; sourceTree = "<group>"; };
+		BE112F47153F0DF10027D248 /* libGreystripeSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGreystripeSDK.a; sourceTree = "<group>"; };
+		BE112F4D153F11210027D248 /* AdWhirlAdapterGreystripe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdWhirlAdapterGreystripe.h; sourceTree = "<group>"; };
+		BE112F4E153F11210027D248 /* AdWhirlAdapterGreystripe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdWhirlAdapterGreystripe.m; sourceTree = "<group>"; };
+		BE112F53153F1ABC0027D248 /* AdWhirlAdapterMdotM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdWhirlAdapterMdotM.h; sourceTree = "<group>"; };
+		BE112F54153F1ABC0027D248 /* AdWhirlAdapterMdotM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdWhirlAdapterMdotM.m; sourceTree = "<group>"; };
+		BE112F56153F1E3F0027D248 /* AdWhirlAdapterMillennial.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdWhirlAdapterMillennial.h; sourceTree = "<group>"; };
+		BE112F57153F1E3F0027D248 /* AdWhirlAdapterMillennial.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdWhirlAdapterMillennial.m; sourceTree = "<group>"; };
+		BE112F5E153F1F7A0027D248 /* libMMSDK_4.5.5.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMMSDK_4.5.5.a; sourceTree = "<group>"; };
+		BE112F5F153F1F7A0027D248 /* MMAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMAdView.h; sourceTree = "<group>"; };
+		BE112F61153F20350027D248 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		BE30AC1C153CF01E0043446A /* catnmouse-hd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "catnmouse-hd.plist"; sourceTree = "<group>"; };
 		BE30AC1D153CF01E0043446A /* catnmouse-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "catnmouse-hd.png"; sourceTree = "<group>"; };
 		BE30AC20153CF0250043446A /* catnmouse.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = catnmouse.plist; sourceTree = "<group>"; };
@@ -652,6 +671,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE112F62153F20350027D248 /* MobileCoreServices.framework in Frameworks */,
 				BEA96492152F71F000D1149D /* libz.dylib in Frameworks */,
 				BEA96490152F71E800D1149D /* libsqlite3.dylib in Frameworks */,
 				BEA9648E152F71DD00D1149D /* iAd.framework in Frameworks */,
@@ -671,6 +691,8 @@
 				BE531CC6151CEE7500541B9C /* Foundation.framework in Frameworks */,
 				BE531CC8151CEE7500541B9C /* CoreGraphics.framework in Frameworks */,
 				BEA9649C152F725100D1149D /* libGoogleAdMobAds.a in Frameworks */,
+				BE112F48153F0DF10027D248 /* libGreystripeSDK.a in Frameworks */,
+				BE112F60153F1F7A0027D248 /* libMMSDK_4.5.5.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -710,9 +732,31 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		BE112F43153F0DF10027D248 /* GSSDK 3.2.0 */ = {
+			isa = PBXGroup;
+			children = (
+				BE112F44153F0DF10027D248 /* GreystripeDelegate.h */,
+				BE112F45153F0DF10027D248 /* GSAdEngine.h */,
+				BE112F46153F0DF10027D248 /* GSAdView.h */,
+				BE112F47153F0DF10027D248 /* libGreystripeSDK.a */,
+			);
+			path = "GSSDK 3.2.0";
+			sourceTree = "<group>";
+		};
+		BE112F5D153F1F7A0027D248 /* MMSDK */ = {
+			isa = PBXGroup;
+			children = (
+				BE112F5E153F1F7A0027D248 /* libMMSDK_4.5.5.a */,
+				BE112F5F153F1F7A0027D248 /* MMAdView.h */,
+			);
+			path = MMSDK;
+			sourceTree = "<group>";
+		};
 		BE531CAA151CEE7500541B9C = {
 			isa = PBXGroup;
 			children = (
+				BE112F5D153F1F7A0027D248 /* MMSDK */,
+				BE112F43153F0DF10027D248 /* GSSDK 3.2.0 */,
 				BEA96493152F725100D1149D /* GoogleAdMobAdsSDKiOS-5.0.5 */,
 				BEA96417152F717B00D1149D /* AdWhirl */,
 				BE531CC9151CEE7500541B9C /* catnmouse */,
@@ -734,6 +778,7 @@
 			children = (
 				BEA96491152F71F000D1149D /* libz.dylib */,
 				BEA9648F152F71E800D1149D /* libsqlite3.dylib */,
+				BE112F61153F20350027D248 /* MobileCoreServices.framework */,
 				BEA9648D152F71DD00D1149D /* iAd.framework */,
 				BEA9648B152F71D600D1149D /* SystemConfiguration.framework */,
 				BEA96489152F71CE00D1149D /* MessageUI.framework */,
@@ -1265,6 +1310,12 @@
 		BEA96418152F717B00D1149D /* adapters */ = {
 			isa = PBXGroup;
 			children = (
+				BE112F56153F1E3F0027D248 /* AdWhirlAdapterMillennial.h */,
+				BE112F57153F1E3F0027D248 /* AdWhirlAdapterMillennial.m */,
+				BE112F53153F1ABC0027D248 /* AdWhirlAdapterMdotM.h */,
+				BE112F54153F1ABC0027D248 /* AdWhirlAdapterMdotM.m */,
+				BE112F4D153F11210027D248 /* AdWhirlAdapterGreystripe.h */,
+				BE112F4E153F11210027D248 /* AdWhirlAdapterGreystripe.m */,
 				BEA9641B152F717B00D1149D /* AdWhirlAdapterGoogleAdMobAds.h */,
 				BEA9641C152F717B00D1149D /* AdWhirlAdapterGoogleAdMobAds.m */,
 				BEA96421152F717B00D1149D /* AdWhirlAdapterIAd.h */,
@@ -1599,7 +1650,10 @@
 				BEA9647D152F717B00D1149D /* AdWhirlWebBrowserController.m in Sources */,
 				BEA9647E152F717B00D1149D /* ARRollerView.m in Sources */,
 				BEA9647F152F717B00D1149D /* AWNetworkReachabilityWrapper.m in Sources */,
+				BE112F51153F16700027D248 /* AdWhirlAdapterGreystripe.m in Sources */,
+				BE112F55153F1AFD0027D248 /* AdWhirlAdapterMdotM.m in Sources */,
 				BEA96480152F717B00D1149D /* UIColor+AdWhirlConfig.m in Sources */,
+				BE112F58153F1E460027D248 /* AdWhirlAdapterMillennial.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1659,9 +1713,16 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/GoogleAdMobAdsSDKiOS-5.0.5\"",
+					"\"$(SRCROOT)/InMobi iOS SDK Bundle\"",
+					"\"$(SRCROOT)/GSSDK 3.2.0\"",
+					"\"$(SRCROOT)/MMSDK\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = "-lz";
+				OTHER_LDFLAGS = (
+					"-lz",
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -1687,9 +1748,16 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/GoogleAdMobAdsSDKiOS-5.0.5\"",
+					"\"$(SRCROOT)/InMobi iOS SDK Bundle\"",
+					"\"$(SRCROOT)/GSSDK 3.2.0\"",
+					"\"$(SRCROOT)/MMSDK\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = "-lz";
+				OTHER_LDFLAGS = (
+					"-lz",
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
